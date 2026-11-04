@@ -8,10 +8,10 @@
 
 | Task | Evidence | Review route |
 | --- | --- | --- |
-| **1. Fintech Mobile Wallet App Redesign** | Responsive wallet with a truthful zero balance, manually recorded income and expenses, edit/delete, privacy and CSV export. Includes native desktop and mobile Figma references and a sample interactive entry flow. | [Wallet](./wallet/) · [Figma mobile](<https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes?node-id=18-240>) |
+| **1. Fintech Mobile Wallet App Redesign** | Responsive wallet with a truthful zero balance, manually recorded income, expenses and peer transfers, plus edit/delete, privacy and CSV export. Includes native desktop and mobile Figma references and a sample interactive entry flow. | [Wallet](./wallet/) · [Figma mobile](<https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes?node-id=18-240>) |
 | **2. Design System & Component Library** | Native Figma collection with **24 variables**, text and colour styles, **7 component families / 29 variants**; matching code tokens and web documentation. | [Figma library](<https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes?node-id=18-112>) · [Design system web demo](./design-system/) |
 | **3. Interactive E-commerce Checkout** | Editable sample basket, shipping, discount, delivery validation, back/edit path, payment selection and demo confirmation. Native Figma delivery→review→confirmation flow. | [Checkout](./checkout/) · [Figma mobile](<https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes?node-id=18-307>) |
-| **4. End-to-end UX Case Study** | Responsive 10-slide deck covering the challenge, scope, user task hypotheses, information architecture, mobile direction, reusable components, interactions, QA evidence and next steps. | [Case study](./case-study/) · [Study notes](./case-study/README.md) |
+| **4. End-to-end UX Case Study** | Responsive 10-slide deck covering the challenge, scope, hypothesis personas, journey map, low-fidelity wireframes, final UI, reusable components, interactions, QA evidence and next steps. | [Case study](./case-study/) · [Study notes](./case-study/README.md) |
 
 ## Practical reviewer route
 
