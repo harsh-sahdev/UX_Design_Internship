@@ -16,6 +16,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Validate Figma builder source and native-design smoke harness
+        run: |
+          node --check design-system/figma-plugin/code.js
+          node tests/figma-builder-smoke.cjs
       - name: Install test dependencies
         run: npm install --no-audit --no-fund
       - name: Install Chromium
