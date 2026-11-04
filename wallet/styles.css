@@ -82,11 +82,12 @@ h1 { font-size:clamp(32px,3.45vw,50px); line-height:1.12; margin:0 0 10px; lette
 .section-heading { display:flex; justify-content:space-between; gap:14px; align-items:center; margin-bottom:17px; }
 .section-heading h2 { font-size:21px; line-height:1.25; letter-spacing:-.035em; font-weight:730; margin:0 0 5px; }
 .section-heading p { color:var(--muted); font-size:12px; margin:0; }
-.action-buttons { display:grid; grid-template-columns:1fr 1fr; gap:17px; }
+.action-buttons { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:17px; }
 .action-button { background:#fff; border:1px solid var(--line); border-radius:9px; padding:19px 20px; min-height:102px; display:flex; align-items:center; text-align:left; gap:17px; color:var(--ink); transition:border-color .12s; }
 .action-button:hover { border-color:#7a9d92; }
 .action-glyph { border:1px solid #b3d3c3; width:42px; height:42px; flex:none; display:grid; place-items:center; border-radius:50%; font-size:22px; font-weight:400; color:var(--accent); }
 .action-out .action-glyph { border-color:#e6c8b8; color:#b06347; }
+.action-transfer .action-glyph { border-color:#b9cce7; color:#496f9f; }
 .action-button strong,.action-button small { display:block; }
 .action-button strong { font-size:14px; font-weight:720; }
 .action-button small { color:var(--muted); font-size:11px; margin-top:4px; }
