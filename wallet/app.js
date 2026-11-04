@@ -1,279 +1,279 @@
 (() => {
   "use strict";
 
-  const STORAGE_KEY = "mira-wallet-demo-v1";
-  const initialTransactions = [
-    { id: 1, name: "Olivia Martin", detail: "Transfer sent", amount: -125000, date: "2026-11-03", type: "out" },
-    { id: 2, name: "Monthly allowance", detail: "Money received", amount: 850000, date: "2026-11-02", type: "in" },
-    { id: 3, name: "Corner Coffee", detail: "Bill payment", amount: -34000, date: "2026-11-01", type: "out" },
-    { id: 4, name: "Jamie Wilson", detail: "Transfer received", amount: 200000, date: "2026-10-30", type: "in" },
-    { id: 5, name: "Metro Pass", detail: "Bill payment", amount: -59000, date: "2026-10-28", type: "out" }
-  ];
-
-  const currency = new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
+  const KEY = "mira-journal-v2";
+  const categories = {
+    in: ["Income", "Cash added", "Refund", "Gift", "Other"],
+    out: ["Shopping", "Food & drink", "Transport", "Bills", "Other"]
+  };
+  const money = new Intl.NumberFormat("en-IN", {
+    style: "currency", currency: "INR", minimumFractionDigits: 2, maximumFractionDigits: 2
   });
+  const dateFormat = new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", year: "numeric" });
+  const monthFormat = new Intl.DateTimeFormat("en-IN", { month: "long", year: "numeric" });
+  const $ = (id) => document.getElementById(id);
 
-  const balanceEl = document.getElementById("balance");
-  const transactionList = document.getElementById("transaction-list");
-  const emptyState = document.getElementById("empty-state");
-  const searchEl = document.getElementById("transaction-search");
-  const dialog = document.getElementById("money-dialog");
-  const form = document.getElementById("money-form");
-  const recipientField = document.getElementById("recipient-field");
-  const recipientInput = document.getElementById("recipient");
-  const amountInput = document.getElementById("amount");
-  const noteInput = document.getElementById("note");
-  const formError = document.getElementById("form-error");
-  const toast = document.getElementById("toast");
-  const balanceToggle = document.getElementById("toggle-balance");
+  function todayLocal() {
+    const now = new Date();
+    return now.getFullYear() + "-" + String(now.getMonth() + 1).padStart(2, "0") + "-" + String(now.getDate()).padStart(2, "0");
+  }
 
-  let filter = "all";
-  let mode = "send";
-  let balanceHidden = false;
-  let returnFocus = null;
-  let toastTimer = null;
+  function validEntry(row) {
+    return row && typeof row.id === "string" && /^[0-9a-f-]{8,}$/.test(row.id) &&
+      (row.kind === "in" || row.kind === "out") &&
+      Number.isSafeInteger(row.amount) && row.amount > 0 && row.amount <= 100000000 &&
+      typeof row.description === "string" && row.description.length > 0 && row.description.length <= 80 &&
+      typeof row.category === "string" && row.category.length <= 40 &&
+      typeof row.date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(row.date);
+  }
 
-  function readState() {
+  function loadEntries() {
     try {
-      const stored = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      if (
-        stored &&
-        Number.isSafeInteger(stored.balance) &&
-        stored.balance >= 0 &&
-        Array.isArray(stored.transactions)
-      ) {
-        const validTransactions = stored.transactions.filter((tx) =>
-          typeof tx.name === "string" &&
-          typeof tx.detail === "string" &&
-          Number.isSafeInteger(tx.amount) &&
-          (tx.type === "in" || tx.type === "out") &&
-          typeof tx.date === "string"
-        );
-        return { balance: stored.balance, transactions: validTransactions.slice(0, 100) };
+      const parsed = JSON.parse(localStorage.getItem(KEY));
+      if (parsed && parsed.version === 2 && Array.isArray(parsed.entries)) {
+        return parsed.entries.filter(validEntry).slice(0, 5000);
       }
     } catch (_) {
-      // A blocked or invalid localStorage entry should not break the demo.
+      // Missing, blocked or invalid storage should not stop a fresh journal.
     }
-    return { balance: 4856075, transactions: initialTransactions.map((tx) => ({ ...tx })) };
+    return [];
   }
 
-  const state = readState();
+  const entries = loadEntries();
+  let filter = "all";
+  let kind = "in";
+  let hiddenAmounts = false;
+  let toastTimeout = 0;
+  let previousFocus = null;
 
-  function persist() {
+  function save() {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      localStorage.setItem(KEY, JSON.stringify({ version: 2, entries }));
+      $("storage-alert").hidden = true;
     } catch (_) {
-      notify("Changes are visible now but couldn't be saved in this browser.");
+      $("storage-alert").hidden = false;
+      announce("This entry is only available until you close this page. Export your records to keep it.");
     }
   }
 
-  function formatAmount(paise) {
-    return currency.format(paise / 100);
+  function format(paise) {
+    return money.format(paise / 100);
   }
 
-  function renderBalance() {
-    balanceEl.textContent = balanceHidden ? "••••••" : formatAmount(state.balance);
-    balanceToggle.textContent = balanceHidden ? "◎" : "◉";
-    balanceToggle.setAttribute("aria-label", balanceHidden ? "Show balance" : "Hide balance");
-    balanceToggle.setAttribute("aria-pressed", String(balanceHidden));
-    document.querySelector(".spending-total strong").textContent = balanceHidden ? "••••••" : "₹12,480";
+  function amountText(paise) {
+    return hiddenAmounts ? "••••••" : format(paise);
   }
 
-  function displayDate(dateString) {
-    const date = new Date(dateString + "T12:00:00");
-    return Number.isNaN(date.getTime())
-      ? dateString
-      : new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short" }).format(date);
+  function balance() {
+    return entries.reduce((sum, entry) => sum + (entry.kind === "in" ? entry.amount : -entry.amount), 0);
   }
 
-  function transactionRow(tx) {
+  function monthTotals() {
+    const month = todayLocal().slice(0, 7);
+    return entries.reduce((total, entry) => {
+      if (entry.date.startsWith(month)) total[entry.kind] += entry.amount;
+      return total;
+    }, { in: 0, out: 0 });
+  }
+
+  function announce(message) {
+    const toast = $("toast");
+    clearTimeout(toastTimeout);
+    toast.textContent = message;
+    toast.classList.add("show");
+    toastTimeout = setTimeout(() => toast.classList.remove("show"), 3800);
+  }
+
+  function createEntryElement(entry) {
     const item = document.createElement("li");
-    item.className = "transaction-item";
-
-    const icon = document.createElement("span");
-    icon.className = "tx-icon" + (tx.type === "in" ? " in" : "");
-    icon.setAttribute("aria-hidden", "true");
-    icon.textContent = tx.type === "in" ? "↓" : "↗";
+    item.className = "entry-item";
+    const direction = document.createElement("span");
+    direction.className = "entry-direction" + (entry.kind === "out" ? " out" : "");
+    direction.textContent = entry.kind === "in" ? "↓" : "↑";
+    direction.setAttribute("aria-hidden", "true");
 
     const info = document.createElement("div");
-    info.className = "tx-desc";
-    const name = document.createElement("strong");
-    name.textContent = tx.name;
+    info.className = "entry-info";
+    const title = document.createElement("strong");
+    title.textContent = entry.description;
     const detail = document.createElement("span");
-    detail.textContent = tx.detail;
-    info.append(name, detail);
+    detail.textContent = entry.category + " · " + dateFormat.format(new Date(entry.date + "T12:00:00"));
+    info.append(title, detail);
 
-    const total = document.createElement("div");
-    total.className = "tx-value";
     const amount = document.createElement("strong");
-    if (tx.type === "in") amount.classList.add("in");
-    amount.textContent = balanceHidden
-      ? "••••"
-      : (tx.amount > 0 ? "+" : "−") + formatAmount(Math.abs(tx.amount));
-    const date = document.createElement("span");
-    date.textContent = displayDate(tx.date);
-    total.append(amount, date);
-
-    item.append(icon, info, total);
+    amount.className = "entry-amount" + (entry.kind === "in" ? " in" : "");
+    amount.textContent = hiddenAmounts ? "••••" : (entry.kind === "in" ? "+" : "−") + format(entry.amount);
+    item.append(direction, info, amount);
     return item;
   }
 
-  function renderActivity() {
-    const query = searchEl.value.trim().toLowerCase();
-    const filtered = state.transactions.filter((tx) => {
-      const matchesFilter = filter === "all" || tx.type === filter;
-      const matchesQuery = [tx.name, tx.detail].some((text) => text.toLowerCase().includes(query));
-      return matchesFilter && matchesQuery;
-    });
+  function render() {
+    const total = balance();
+    const monthly = monthTotals();
+    $("balance").textContent = amountText(total);
+    $("month-in").textContent = amountText(monthly.in);
+    $("month-out").textContent = amountText(monthly.out);
+    $("entry-total").textContent = String(entries.length);
+    $("month-name").textContent = monthFormat.format(new Date());
+    $("today-label").textContent = dateFormat.format(new Date());
 
-    transactionList.replaceChildren(...filtered.map(transactionRow));
-    emptyState.hidden = filtered.length > 0;
-    document.getElementById("activity-count").textContent =
-      filtered.length + " " + (filtered.length === 1 ? "entry" : "entries");
+    $("toggle-balance").textContent = hiddenAmounts ? "Show" : "Hide";
+    $("toggle-balance").setAttribute("aria-label", hiddenAmounts ? "Show amounts" : "Hide amounts");
+    $("toggle-balance").setAttribute("aria-pressed", String(hiddenAmounts));
+
+    const q = $("entry-search").value.trim().toLocaleLowerCase();
+    const matches = entries.filter((row) =>
+      (filter === "all" || row.kind === filter) &&
+      (row.description + " " + row.category + " " + row.date).toLocaleLowerCase().includes(q)
+    ).sort((a, b) => b.date.localeCompare(a.date) || b.id.localeCompare(a.id));
+
+    $("entry-list").replaceChildren(...matches.map(createEntryElement));
+    $("result-count").textContent = matches.length + (matches.length === 1 ? " entry" : " entries");
+    $("empty-state").hidden = matches.length > 0;
+    if (entries.length) {
+      $("empty-title").textContent = "Nothing found.";
+      $("empty-copy").textContent = "Try another search or filter to find an entry.";
+      $("empty-action").hidden = true;
+    } else {
+      $("empty-title").textContent = "A clean slate.";
+      $("empty-copy").textContent = "Your transactions will appear here once you add the first entry.";
+      $("empty-action").hidden = false;
+    }
   }
 
-  function notify(message) {
-    clearTimeout(toastTimer);
-    toast.textContent = message;
-    toast.classList.add("visible");
-    toastTimer = setTimeout(() => toast.classList.remove("visible"), 3600);
+  function openEntry(nextKind) {
+    kind = nextKind;
+    previousFocus = document.activeElement;
+    $("entry-form").reset();
+    $("entry-error").hidden = true;
+    $("dialog-heading").textContent = kind === "in" ? "Money in" : "Money out";
+    $("dialog-description").textContent = kind === "in"
+      ? "Record money you've received or added. This does not move money."
+      : "Record money you've spent or sent elsewhere. This does not send a payment.";
+    $("entry-category").replaceChildren(...categories[kind].map((category) => {
+      const option = document.createElement("option");
+      option.value = category;
+      option.textContent = category;
+      return option;
+    }));
+    $("entry-date").value = todayLocal();
+    $("entry-dialog").showModal();
+    $("entry-description").focus();
   }
 
-  // Keep messages in one place to avoid flashing a browser-native validation popup.
-  function showError(message) {
-    formError.textContent = message;
-    formError.hidden = false;
+  function closeEntry() {
+    $("entry-dialog").close();
+    if (previousFocus instanceof HTMLElement) previousFocus.focus();
   }
 
-  function openDialog(nextMode) {
-    mode = nextMode;
-    returnFocus = document.activeElement;
-    form.reset();
-    formError.hidden = true;
-    const isAdd = mode === "add";
-
-    document.getElementById("dialog-title").textContent =
-      isAdd ? "Add money" : mode === "bill" ? "Pay a bill" : "Send money";
-    document.getElementById("dialog-description").textContent =
-      isAdd
-        ? "Add funds to your demo wallet. No actual bank transfer takes place."
-        : mode === "bill"
-          ? "Record a sample bill payment from your wallet."
-          : "Simulate a transfer from your wallet.";
-    document.getElementById("submit-money").textContent =
-      isAdd ? "Add money" : mode === "bill" ? "Pay bill" : "Send money";
-    recipientField.hidden = isAdd;
-    recipientInput.required = !isAdd;
-    recipientInput.placeholder = mode === "bill" ? "e.g. Electricity provider" : "e.g. Sam Taylor";
-    amountInput.max = isAdd ? "100000" : "1000000";
-
-    dialog.showModal();
-    (isAdd ? amountInput : recipientInput).focus();
+  function formError(message, field) {
+    $("entry-error").textContent = message;
+    $("entry-error").hidden = false;
+    if (field) field.focus();
   }
 
-  function closeDialog() {
-    dialog.close();
-    formError.hidden = true;
-    if (returnFocus instanceof HTMLElement) returnFocus.focus();
+  function parsePaise(value) {
+    if (!/^\d{1,8}(?:\.\d{1,2})?$/.test(value)) return null;
+    const parts = value.split(".");
+    const result = Number(parts[0]) * 100 + Number((parts[1] || "").padEnd(2, "0"));
+    return Number.isSafeInteger(result) && result > 0 && result <= 100000000 ? result : null;
   }
 
-  function submitTransfer(event) {
+  function saveEntry(event) {
     event.preventDefault();
-    formError.hidden = true;
+    $("entry-error").hidden = true;
+    const description = $("entry-description").value.trim();
+    const paise = parsePaise($("entry-amount").value.trim());
+    const date = $("entry-date").value;
+    const category = $("entry-category").value;
 
-    const rawAmount = amountInput.value.trim();
-    const number = Number(rawAmount);
-    const paise = Math.round(number * 100);
-    if (!rawAmount || !Number.isFinite(number) || number <= 0 || !Number.isSafeInteger(paise)) {
-      showError("Enter a valid amount greater than zero.");
-      amountInput.focus();
-      return;
+    if (description.length < 2) return formError("Enter a description with at least 2 characters.", $("entry-description"));
+    if (paise === null) return formError("Enter an amount from ₹0.01 to ₹10,00,000, using at most two decimal places.", $("entry-amount"));
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || Number.isNaN(new Date(date + "T12:00:00").getTime())) {
+      return formError("Choose a valid date.", $("entry-date"));
     }
-    if (Math.abs(number * 100 - paise) > 0.000001) {
-      showError("Use up to two digits after the decimal point.");
-      amountInput.focus();
-      return;
+    if (kind === "out" && paise > balance()) {
+      return formError("This is more than your recorded balance. Add the money in first, or use a smaller amount.", $("entry-amount"));
     }
-    if (mode === "add" && paise > 10000000) {
-      showError("For this demo, you can add up to ₹1,00,000 at a time.");
-      return;
-    }
-    if (mode !== "add" && paise > state.balance) {
-      showError("Insufficient balance. Enter a smaller amount.");
-      return;
-    }
+    const id = (globalThis.crypto && typeof crypto.randomUUID === "function")
+      ? crypto.randomUUID() : "id-" + String(Date.now()) + "-" + Math.random().toString(16).slice(2);
 
-    const recipient = recipientInput.value.trim();
-    if (mode !== "add" && recipient.length < 2) {
-      showError("Enter a recipient or provider name with at least two characters.");
-      recipientInput.focus();
-      return;
-    }
-
-    const isAdd = mode === "add";
-    const detail = noteInput.value.trim() ||
-      (isAdd ? "Demo wallet top-up" : mode === "bill" ? "Bill payment" : "Transfer sent");
-    const transaction = {
-      id: Date.now(),
-      name: isAdd ? "Wallet top-up" : recipient,
-      detail,
-      amount: isAdd ? paise : -paise,
-      date: new Date().toISOString().slice(0, 10),
-      type: isAdd ? "in" : "out"
-    };
-
-    state.balance += transaction.amount;
-    state.transactions.unshift(transaction);
-    state.transactions = state.transactions.slice(0, 100);
-    persist();
-    renderBalance();
-    renderActivity();
-    closeDialog();
-    notify((isAdd ? "Added " : "Recorded ") + formatAmount(paise) + " in the demo wallet.");
+    entries.push({ id, kind, amount: paise, description, category, date });
+    save();
+    render();
+    closeEntry();
+    announce("Entry saved to your journal.");
   }
 
-  document.querySelectorAll("[data-action]").forEach((control) => {
-    control.addEventListener("click", () => openDialog(control.dataset.action));
-  });
+  function csvCell(value) {
+    let safe = String(value);
+    if (/^[=+@\t\r]/.test(safe)) safe = "'" + safe;
+    return '"' + safe.replace(/"/g, '""') + '"';
+  }
 
-  document.querySelectorAll("[data-filter]").forEach((button) => {
-    button.addEventListener("click", () => {
-      filter = button.dataset.filter;
-      document.querySelectorAll("[data-filter]").forEach((item) => {
-        const selected = item === button;
-        item.classList.toggle("selected", selected);
-        item.setAttribute("aria-pressed", String(selected));
-      });
-      renderActivity();
+  function exportCSV() {
+    const header = ["Date", "Direction", "Category", "Description", "Amount INR"];
+    const rows = entries.slice().sort((a, b) => a.date.localeCompare(b.date)).map((entry) => [
+      entry.date, entry.kind === "in" ? "In" : "Out", entry.category, entry.description,
+      (entry.kind === "in" ? "" : "-") + (entry.amount / 100).toFixed(2)
+    ]);
+    const content = "\ufeff" + [header, ...rows].map((row) => row.map(csvCell).join(",")).join("\r\n");
+    const url = URL.createObjectURL(new Blob([content], { type: "text/csv;charset=utf-8" }));
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "mira-records-" + todayLocal() + ".csv";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    announce(entries.length ? "Records exported as CSV." : "Empty CSV exported. Add entries to include transactions.");
+  }
+
+  document.querySelectorAll("[data-kind]").forEach((button) =>
+    button.addEventListener("click", () => openEntry(button.dataset.kind))
+  );
+  $("empty-action").addEventListener("click", () => openEntry("in"));
+  $("entry-form").addEventListener("submit", saveEntry);
+  $("close-entry").addEventListener("click", closeEntry);
+  $("cancel-entry").addEventListener("click", closeEntry);
+  $("toggle-balance").addEventListener("click", () => {
+    hiddenAmounts = !hiddenAmounts;
+    render();
+  });
+  $("entry-search").addEventListener("input", render);
+
+  document.querySelectorAll("[data-filter]").forEach((button) => button.addEventListener("click", () => {
+    filter = button.dataset.filter;
+    document.querySelectorAll("[data-filter]").forEach((item) => {
+      const isActive = item === button;
+      item.classList.toggle("active", isActive);
+      item.setAttribute("aria-pressed", String(isActive));
     });
-  });
+    render();
+  }));
 
-  function updateNav() {
-    const hash = window.location.hash || "#overview";
+  function navActive() {
+    const hash = location.hash || "#overview";
     document.querySelectorAll(".nav-link").forEach((link) => {
-      const active = link.getAttribute("href") === hash;
-      link.classList.toggle("active", active);
-      if (active) link.setAttribute("aria-current", "location");
+      const current = link.getAttribute("href") === hash;
+      link.classList.toggle("is-active", current);
+      if (current) link.setAttribute("aria-current", "location");
       else link.removeAttribute("aria-current");
     });
   }
+  addEventListener("hashchange", navActive);
 
-  window.addEventListener("hashchange", updateNav);
-  searchEl.addEventListener("input", renderActivity);
-  balanceToggle.addEventListener("click", () => {
-    balanceHidden = !balanceHidden;
-    renderBalance();
-    renderActivity();
+  $("export-top").addEventListener("click", exportCSV);
+  $("export-bottom").addEventListener("click", exportCSV);
+  $("reset-data").addEventListener("click", () => $("clear-dialog").showModal());
+  $("cancel-clear").addEventListener("click", () => $("clear-dialog").close());
+  $("confirm-clear").addEventListener("click", () => {
+    entries.length = 0;
+    save();
+    render();
+    $("clear-dialog").close();
+    announce("All local records cleared.");
   });
-  document.getElementById("close-dialog").addEventListener("click", closeDialog);
-  document.getElementById("cancel-dialog").addEventListener("click", closeDialog);
-  form.addEventListener("submit", submitTransfer);
-
-  renderBalance();
-  renderActivity();
-  updateNav();
+  render();
+  navActive();
 })();
