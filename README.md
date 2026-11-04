@@ -1,35 +1,26 @@
 # UX Design Internship · Interface Craft
 
-A set of practical UI/UX assignments built with responsive HTML, CSS and JavaScript. The focus is on complete interactions, honest product states, clean design decisions and code that a reviewer can run without a complicated setup.
+Four connected UI/UX deliverables built around thoughtful interaction, honest product states, and consistent reusable design.
 
 [![Browser QA](https://github.com/harsh-sahdev/UX_Design_Internship/actions/workflows/wallet-qa.yml/badge.svg)](https://github.com/harsh-sahdev/UX_Design_Internship/actions/workflows/wallet-qa.yml)
 
-## Submitted work
+## Four tasks
 
-| Assignment | Deliverable | Link |
+| Assignment | Deliverable | Review |
 | --- | --- | --- |
-| **Task 1** · Fintech Wallet Redesign | Local-first money journal with zero-state balance, income/expense entries, corrections, filters, privacy toggle and CSV export | [Open Wallet](./wallet/) |
-| **Task 3** · Interactive E-commerce Checkout | Editable basket, shipping methods, promo code, delivery validation, payment-method selection and an explicit sample confirmation | [Open Checkout](./checkout/) |
+| **Task 1 · Fintech Mobile Wallet App Redesign** | Local-first money journal, ₹0.00 empty state, income/outflow, editing, filtering, privacy and export; native mobile/desktop Figma screens | [Open Wallet](./wallet/) · [View Figma wallet](<https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes?node-id=18-240>) |
+| **Task 2 · Design System & Component Library** | Native Figma design tokens, 24 variables, text/colour styles, 7 component families and 29 variants; matching web showcase | [View native Figma components](<https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes?node-id=18-112>) · [Web showcase](./design-system/) |
+| **Task 3 · Interactive E-commerce Checkout** | Editable sample basket, delivery selection, discount, validation, payment review and simulated confirmation; Figma click-through flow | [Open Checkout](./checkout/) · [View Figma checkout](<https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes?node-id=18-307>) |
+| **Task 4 · End-to-end UX Case Study** | Ten-slide responsive presentation: problem, constraints, journey, IA, design direction, interaction decisions, QA and next steps | [Open case-study deck](./case-study/) |
 
-These are the **two selected coding assignments** for this portfolio. They do not process payments or connect to real bank accounts.
+### Figma source
+[**Interface Craft: Design System & Prototypes**](https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes) contains native editable design layers, reusable component variants, four overview designs and four linked interaction-state frames. Figma file view permissions and team-library publishing status are separate from creating the content and must be checked in the share dialog.
 
-## Additional work
-
-**Task 2 · Design System:** [Live component showcase](./design-system/), [editable SVG board](./design-system/figma-component-board.svg), [tokens](./design-system/tokens.json) and [Figma handoff instructions](./design-system/README.md) are included. A **native Figma component file has not been created** and Task 2 should not be marked as complete until that file is published and linked.
-
-**Task 4 · UX Case Study:** not submitted.
-
-## Review locally
-
-A local static server is recommended to keep browser storage and URLs consistent.
-
+### Review locally
 ```bash
 python3 -m http.server 8000
 ```
-
-Open `http://localhost:8000/`. The homepage links to all three sections.
-
-To run the browser checks:
+Open `http://localhost:8000`. All demos are static and need no credentials. To run automated browser checks:
 
 ```bash
 npm install
@@ -37,24 +28,12 @@ npx playwright install chromium
 npm test
 ```
 
-[GitHub Actions](https://github.com/harsh-sahdev/UX_Design_Internship/actions/workflows/wallet-qa.yml) runs the Playwright suite on push and stores desktop/mobile screenshots as downloadable workflow artifacts. The current build result is shown by the badge above.
+[GitHub Actions QA](https://github.com/harsh-sahdev/UX_Design_Internship/actions/workflows/wallet-qa.yml) runs automated Playwright tests and exports screenshots. [Reviewer and submission guide](./SUBMISSION.md) · [Progress](./PROGRESS.md).
 
-## Design and implementation notes
+### Product boundaries
+This is coursework rather than production banking or e-commerce. The Wallet begins with no invented records and saves manual data in localStorage; it does not connect to a bank or transfer money. The Checkout is a plainly labelled example order without an actual purchase or payment. Case-study hypotheses are not presented as real interviews, survey results or measurable conversion lifts.
 
-The wallet starts at **₹0.00** and creates records only when someone adds them. Entries stay in that browser's local storage. This is a record-keeping interface, not a live wallet or money-transfer app.
+### Source and handoff
+[Wallet notes](./wallet/UX-NOTES.md) · [Checkout decisions](./checkout/DESIGN-DECISIONS.md) · [Tokens](./design-system/tokens.json) · [Native Figma builder source](./design-system/figma-plugin/) · [Case study notes](./case-study/README.md).
 
-The checkout begins with a clearly labelled **sample basket** so a reviewer can complete the full flow immediately. Item quantities, totals, delivery charges and discounts update together. No customer information is sent to a backend; no real purchase is created.
-
-The three sections share the same **Interface Craft** typography, teal palette, spacing tokens and wordmark. For detailed reasoning, see the [wallet design notes](./wallet/UX-NOTES.md) and [checkout design decisions](./checkout/DESIGN-DECISIONS.md).
-
-## Submission evidence
-
-[Submission checklist and reviewer guide](./SUBMISSION.md) · [Wallet QA](./wallet/QA.md) · [Checkout QA](./checkout/QA.md) · [Design System QA](./design-system/QA.md)
-
-No external services, checkout credentials or API secrets are required.
-
-### Generate the native Figma design system (Task 2)
-
-[**Open the Figma builder**](./design-system/figma-plugin/) to generate a real Figma library with 7 native component sets, variants, Figma variables/styles, and Wallet/Checkout desktop + mobile screens. The GitHub Actions workflow also provides an installable builder ZIP.
-
-**Important:** The builder source is ready, but it must be run inside a Figma Design file and the resulting shareable Figma URL added here. Until then, Task 2 is **not yet a completed native Figma submission**. [Installation and review steps](./design-system/figma-plugin/README.md).
+**Public source repository:** https://github.com/harsh-sahdev/UX_Design_Internship
