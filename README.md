@@ -52,3 +52,9 @@ The three sections share the same **Interface Craft** typography, teal palette, 
 [Submission checklist and reviewer guide](./SUBMISSION.md) · [Wallet QA](./wallet/QA.md) · [Checkout QA](./checkout/QA.md) · [Design System QA](./design-system/QA.md)
 
 No external services, checkout credentials or API secrets are required.
+
+### Generate the native Figma design system (Task 2)
+
+[**Open the Figma builder**](./design-system/figma-plugin/) to generate a real Figma library with 7 native component sets, variants, Figma variables/styles, and Wallet/Checkout desktop + mobile screens. The GitHub Actions workflow also provides an installable builder ZIP.
+
+**Important:** The builder source is ready, but it must be run inside a Figma Design file and the resulting shareable Figma URL added here. Until then, Task 2 is **not yet a completed native Figma submission**. [Installation and review steps](./design-system/figma-plugin/README.md).

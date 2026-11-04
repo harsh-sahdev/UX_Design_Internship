@@ -10,6 +10,10 @@
 - [Figma handoff specification](./figma-handoff.md): pages, component inventory, variants and implementation guidance.
 - [QA checklist](./QA.md): components, accessibility states and Figma-specific acceptance.
 
+## Fast route: build native Figma library automatically
+
+A [ready-to-run local Figma builder](./figma-plugin/) now creates the Figma pages, styles, variables, native component sets/variants, and editable Wallet/Checkout frames. Download and import its manifest from Figma Desktop, then run it inside a new empty file. The following manual route remains useful if the plugin cannot be imported.
+
 ## Build the native Figma library
 
 1. Create a Figma design file named **Interface Craft · Design System**.

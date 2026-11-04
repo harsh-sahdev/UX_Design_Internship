@@ -25,3 +25,5 @@
 - [ ] Ensure controls have at least a 44px target in high-priority actions.
 
 **Notes:** Web and SVG/JSON assets are implemented. Native Figma-only checks remain open.
+
+Native builder source and mock harness exist at `figma-plugin/` and `../tests/figma-builder-smoke.cjs`. This is not a substitute for inspecting the generated native Figma file. Do not tick the native-file checklist boxes without the actual file URL.

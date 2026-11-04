@@ -21,3 +21,7 @@ Updated: 4 November 2026
 **Select Task 1 and Task 3** for the minimum-two-task internship submission when the current GitHub Actions run is green and the files have been manually reviewed. The design-system assets are provided for handoff, but do not count Task 2 as a native Figma delivery.
 
 All features described are front-end UI/UX implementations. No real money movement, payment fulfilment or fabricated user-testing claims are made.
+
+## Task 2 latest
+
+Native Figma Design builder code added at `design-system/figma-plugin/`. A syntax and mock-based creation test runs in GitHub Actions. This package can generate native pages, variables, component sets and editable screen frames; no Figma cloud file has yet been created by this repo. Figma Desktop execution, visual verification and a shareable file URL are still required.

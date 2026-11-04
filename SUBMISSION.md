@@ -30,3 +30,7 @@ It runs Playwright Chromium tests and uploads screenshots. The workflow badge in
 These projects are coursework interfaces, not production banking or e-commerce systems. There is no login, database, actual inventory, regulatory payment flow or fulfilment. Sample values are explicitly labelled. No user interviews, real customer testing or security certification is claimed.
 
 **Portal form:** paste the public GitHub URL above and select only the tasks whose mandatory deliverables exist. LinkedIn and live-demo links are optional fields on the dashboard, not prerequisites.
+
+## Additional Task 2 option
+
+To include **Task 2 (Design System & Component Library in Figma)**, use the [one-run Figma builder](./design-system/figma-plugin/) to create actual native Figma components, variables and desktop/mobile frames in a new file. Share that file and add the link to this repository. The SVG/JSON assets or builder source **alone do not count as completing native Figma work**. Until the native file has been run and checked, select Tasks 1 and 3 only.
