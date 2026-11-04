@@ -1,30 +1,34 @@
-# Task 2 · Design System and Figma Handoff
+# Task 2 · Native Figma Design System and Handoff
 
-**Interface Craft** uses one consistent system across the Wallet and Checkout exercises. This directory contains editable assets and reference screens that can be used to build a native Figma component library.
+**Interface Craft** is a shared UI system for the Wallet and Checkout coursework. The native editable Figma document has already been created. The repository also contains the matching web reference and source tokens.
 
-## Deliverables available now
+## Review the actual Figma file
 
-- [Component board (SVG)](./figma-component-board.svg): 1600 × 1360 px, editable vector layers grouped into colour, type, button, form, status, wallet and checkout reference sections.
-- [Design tokens (JSON)](./tokens.json): portable colour, spacing, radius and typography values using `$type` / `$value` notation.
-- [Live component reference](./index.html): browser-rendered buttons, inputs, progress, cards and modal states.
-- [Figma handoff specification](./figma-handoff.md): pages, component inventory, variants and implementation guidance.
-- [QA checklist](./QA.md): components, accessibility states and Figma-specific acceptance.
+[**Open Interface Craft · Design System & Prototypes in Figma**](https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes)
 
-## Fast route: build native Figma library automatically
+[**Jump to native components**](https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes?node-id=18-112)
 
-A [ready-to-run local Figma builder](./figma-plugin/) now creates the Figma pages, styles, variables, native component sets/variants, and editable Wallet/Checkout frames. Download and import its manifest from Figma Desktop, then run it inside a new empty file. The following manual route remains useful if the plugin cannot be imported.
+The Figma document contains three pages: foundations, native components, and Wallet/Checkout screens. It includes **24 native variables**, text and colour styles, **7 component families with 29 variants**, four overview screens (mobile/desktop Wallet and Checkout) and four mobile interaction-state screens. Two prototype starting points cover Wallet recording and Checkout.
 
-## Build the native Figma library
+**Sharing caveat:** A file existing in the connected Figma account does not prove that anonymous reviewers can view it. Check **Share → General access → Anyone with the link → Can view** in the Figma UI before submitting to external reviewers. Native components are not automatically a published team library; publishing is a separate Figma operation and may depend on plan permissions.
 
-1. Create a Figma design file named **Interface Craft · Design System**.
-2. Import `figma-component-board.svg` onto a page called **00 · Overview**. Figma can import the vector elements as editable shapes (font matching may affect text).
-3. Use `tokens.json` to create or map colours, spacing, radius and type variables.
-4. Construct individual **Auto Layout** components from the board: Button (type/state variants), Input (default/focus/error/disabled), Badge, Transaction Row, Navigation, Checkout Step and Dialog.
-5. Add mobile/desktop frames for Wallet and Checkout and wire basic prototype links.
-6. Publish the file and add its public/viewable link to the repository's README.
+## Repository source and references
 
-**Important:** These SVG and JSON sources do not themselves constitute a native `.fig` file or published Figma component library. A Figma account and file are needed for that deliverable. Do not tick Task 2 as completed on the internship form until the native file is created and linked.
+- [Component board (SVG)](./figma-component-board.svg): editable reference artwork.
+- [Design tokens (JSON)](./tokens.json): portable colour, spacing, radius and typography tokens.
+- [Web component showcase](./index.html): working browser examples.
+- [Figma handoff specification](./figma-handoff.md): component inventory and design rules.
+- [Figma builder source](./figma-plugin/): reproducible builder for a new document; **not needed** to view the existing native file.
+- [QA checklist](./QA.md): accessibility, state and component acceptance criteria.
 
-## Technical source of truth
+## Reviewer checklist
 
-The running interfaces use `tokens.css` and `../assets/brand.css`. Whenever values change in Figma, update both the JSON tokens and corresponding CSS to keep handoff consistent.
+1. Open the native Figma link and verify it works in a signed-out or private browser window.
+2. Inspect native variable collections, styles and component variants rather than treating imported SVGs as the library.
+3. Inspect Wallet and Checkout mobile/desktop frames and run both prototype flows.
+4. Compare the native components with the [web showcase](./index.html) and [tokens](./tokens.json).
+5. Use [SUBMISSION.md](../SUBMISSION.md) for the four-task reviewer route.
+
+## Product and publishing boundaries
+
+These are coursework UI prototypes, not production financial or payment systems. The source SVG and token JSON are supporting assets, not substitutes for the existing native Figma file. The Figma link must be externally accessible before it is submitted, and a **published team library** should only be claimed after Figma explicitly confirms publication.
