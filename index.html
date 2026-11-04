@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#10262d">
-  <meta name="description" content="Interface Craft: wallet interface, checkout experience and a small design system.">
+  <meta name="description" content="Interface Craft: wallet interface, checkout experience and a reusable design library, and a focused UX case study.">
   <title>Interface Craft | UI/UX Projects</title>
   <link rel="stylesheet" href="./design-system/tokens.css">
   <link rel="stylesheet" href="./assets/brand.css">
@@ -13,7 +13,7 @@
     .shell{max-width:1140px;margin:auto;padding:0 26px}
     .top{height:86px;border-bottom:1px solid var(--color-border);background:#fff}
     .top .shell{height:100%;display:flex;justify-content:space-between;align-items:center;gap:20px}
-    .top-nav{display:flex;gap:25px;flex-wrap:wrap}
+    .top-nav{display:flex;gap:20px;flex-wrap:wrap}
     .top-nav a{text-decoration:none;color:var(--color-muted);font-size:13px;font-weight:650}
     .top-nav a:hover{color:var(--color-primary)}
     .hero{padding:88px 0 72px;max-width:785px}
@@ -23,7 +23,7 @@
     .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:24px}
     h2{font-size:25px;letter-spacing:-.04em;margin:0}
     .section-head p{color:var(--color-muted);font-size:12px;margin:0}
-    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:78px}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:78px}
     .project{background:#fff;border:1px solid var(--color-border);border-radius:12px;padding:26px 25px;display:flex;flex-direction:column;min-height:298px;transition:border-color .16s,transform .16s}
     .project:hover{border-color:#8db7a5;transform:translateY(-2px)}
     .project .number{font-size:11px;color:var(--color-primary);letter-spacing:.1em;font-weight:780}
@@ -39,17 +39,18 @@
 <body>
 <a class="sr-only" href="#projects">Skip to projects</a>
 <header class="top"><div class="shell">
-  <a class="ic-brand" href="./index.html" aria-label="Interface Craft home"><span class="ic-name">interface<span>craft.</span></span><small class="ic-section">Selected interface projects</small></a>
-  <nav class="top-nav" aria-label="Projects"><a href="./wallet/">Wallet</a><a href="./checkout/">Checkout</a><a href="./design-system/">Design System</a></nav>
+  <a class="ic-brand" href="./index.html" aria-label="Interface Craft home"><span class="ic-name">interface<span>craft.</span></span><small class="ic-section">Four interface projects</small></a>
+  <nav class="top-nav" aria-label="Projects"><a href="./wallet/">Wallet</a><a href="./design-system/">Design System</a><a href="./checkout/">Checkout</a><a href="./case-study/">Case Study</a></nav>
 </div></header>
 <main class="shell">
-  <div class="hero"><span class="overline">UI / UX Internship Work</span><h1>Interfaces built for everyday use.</h1><p>Three connected exercises under one identity. Each focuses on clear interactions, readable layouts and thoughtful details rather than decorative screens.</p></div>
+  <div class="hero"><span class="overline">UI / UX Internship Work</span><h1>Interfaces built for everyday use.</h1><p>Four connected assignments under one design language. Each focuses on clear interactions, readable layouts and thoughtful details rather than decorative screens.</p></div>
   <section id="projects" aria-labelledby="projects-title">
-    <div class="section-head"><h2 id="projects-title">Explore the work</h2><p>Built with HTML, CSS and JavaScript</p></div>
+    <div class="section-head"><h2 id="projects-title">Explore the work</h2><p>Four UI/UX internship deliverables</p></div>
     <div class="grid">
       <article class="project"><span class="number">01 / FINTECH</span><h3>Wallet</h3><p>A browser-local journal to track money in and out, manage entries, search history and export records.</p><a href="./wallet/">Open Wallet <span aria-hidden="true">↗</span></a></article>
-      <article class="project"><span class="number">02 / COMMERCE</span><h3>Checkout</h3><p>A responsive checkout experience with delivery details, order totals, promo codes and a sample completion flow.</p><a href="./checkout/">Open Checkout <span aria-hidden="true">↗</span></a></article>
-      <article class="project"><span class="number">03 / FOUNDATIONS</span><h3>Design System</h3><p>The shared type, colours, components and usage notes behind both interfaces. Figma handoff documentation included.</p><a href="./design-system/">View components <span aria-hidden="true">↗</span></a></article>
+      <article class="project"><span class="number">02 / FIGMA LIBRARY</span><h3>Design System</h3><p>Native editable Figma components with seven families and variant states, backed by design tokens and documented UI guidelines.</p><a href="https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes?node-id=18-112" target="_blank" rel="noopener noreferrer">Open Figma library <span aria-hidden="true">↗</span></a></article>
+      <article class="project"><span class="number">03 / COMMERCE</span><h3>Checkout</h3><p>An editable checkout journey with delivery details, basket calculations, promo codes, validation and a sample confirmation.</p><a href="./checkout/">Open Checkout <span aria-hidden="true">↗</span></a></article>
+      <article class="project"><span class="number">04 / PROCESS</span><h3>UX Case Study</h3><p>A ten-slide walkthrough of the product challenge, design choices, prototype flow, quality checks and next steps.</p><a href="./case-study/">Explore Case Study <span aria-hidden="true">↗</span></a></article>
     </div>
   </section>
   <footer class="foot"><span>Interface Craft · UI/UX Portfolio</span><span>Wallet data stays in the browser. Checkout does not process payments.</span></footer>
