@@ -23,7 +23,7 @@ jobs:
       - name: Build Figma plugin install archive
         run: |
           cd design-system/figma-plugin
-          zip -q ../../../figma-plugin.zip manifest.json code.js README.md
+          zip -q ../../figma-plugin.zip manifest.json code.js README.md
       - name: Upload Figma builder
         uses: actions/upload-artifact@v4
         with:
