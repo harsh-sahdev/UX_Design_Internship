@@ -1,32 +1,54 @@
-# Interface Craft
+# UX Design Internship · Interface Craft
 
-A small collection of UI/UX internship assignments. Each has its own source, usage notes and limits. The implementation stays straightforward: accessible HTML, responsive CSS and plain JavaScript.
+A set of practical UI/UX assignments built with responsive HTML, CSS and JavaScript. The focus is on complete interactions, honest product states, clean design decisions and code that a reviewer can run without a complicated setup.
 
-## Projects
+[![Browser QA](https://github.com/harsh-sahdev/UX_Design_Internship/actions/workflows/wallet-qa.yml/badge.svg)](https://github.com/harsh-sahdev/UX_Design_Internship/actions/workflows/wallet-qa.yml)
 
-| Task | Project | Current state |
+## Submitted work
+
+| Assignment | Deliverable | Link |
 | --- | --- | --- |
-| 1 | [Interface Craft Wallet](./wallet/) | Redesigned and implemented; browser verification pending |
-| 2 | [Figma design system](./design-system/) | Web reference ready; native Figma file not built |
-| 3 | [Interface Craft Checkout](./checkout/) | Interactive checkout flow; final UI review pending |
-| 4 | UX case study | Not started |
+| **Task 1** · Fintech Wallet Redesign | Local-first money journal with zero-state balance, income/expense entries, corrections, filters, privacy toggle and CSV export | [Open Wallet](./wallet/) |
+| **Task 3** · Interactive E-commerce Checkout | Editable basket, shipping methods, promo code, delivery validation, payment-method selection and an explicit sample confirmation | [Open Checkout](./checkout/) |
 
-## Run
+These are the **two selected coding assignments** for this portfolio. They do not process payments or connect to real bank accounts.
 
-From the repository root run:
+## Additional work
 
-    python -m http.server 8000
+**Task 2 · Design System:** [Live component showcase](./design-system/), [editable SVG board](./design-system/figma-component-board.svg), [tokens](./design-system/tokens.json) and [Figma handoff instructions](./design-system/README.md) are included. A **native Figma component file has not been created** and Task 2 should not be marked as complete until that file is published and linked.
 
-Open http://localhost:8000/wallet/ to review Task 1, or http://localhost:8000/checkout/ for Task 3. The projects are static and don't require a build.
+**Task 4 · UX Case Study:** not submitted.
 
-Interface Craft Wallet is a browser-local personal money journal, not a banking service. It starts at zero and records only data the user enters. No real bank transfers or card payments happen.
+## Review locally
 
-## Verification
+A local static server is recommended to keep browser storage and URLs consistent.
 
-Browser test scenarios are under [tests/](./tests/). After installing dependencies, run npm test. Manual responsive and accessibility review is tracked in [wallet/QA.md](./wallet/QA.md).
+```bash
+python3 -m http.server 8000
+```
 
-The repository is public for portfolio review. Do not submit or claim native Figma work until that deliverable actually exists.
+Open `http://localhost:8000/`. The homepage links to all three sections.
 
-## Brand identity
+To run the browser checks:
 
-All sections use the **Interface Craft** wordmark, dark-teal palette, shared type and component tokens. `design-system/tokens.css` defines the foundation; `assets/brand.css` defines the wordmark. Wallet and Checkout are section labels, not separate companies.
+```bash
+npm install
+npx playwright install chromium
+npm test
+```
+
+[GitHub Actions](https://github.com/harsh-sahdev/UX_Design_Internship/actions/workflows/wallet-qa.yml) runs the Playwright suite on push and stores desktop/mobile screenshots as downloadable workflow artifacts. The current build result is shown by the badge above.
+
+## Design and implementation notes
+
+The wallet starts at **₹0.00** and creates records only when someone adds them. Entries stay in that browser's local storage. This is a record-keeping interface, not a live wallet or money-transfer app.
+
+The checkout begins with a clearly labelled **sample basket** so a reviewer can complete the full flow immediately. Item quantities, totals, delivery charges and discounts update together. No customer information is sent to a backend; no real purchase is created.
+
+The three sections share the same **Interface Craft** typography, teal palette, spacing tokens and wordmark. For detailed reasoning, see the [wallet design notes](./wallet/UX-NOTES.md) and [checkout design decisions](./checkout/DESIGN-DECISIONS.md).
+
+## Submission evidence
+
+[Submission checklist and reviewer guide](./SUBMISSION.md) · [Wallet QA](./wallet/QA.md) · [Checkout QA](./checkout/QA.md) · [Design System QA](./design-system/QA.md)
+
+No external services, checkout credentials or API secrets are required.
