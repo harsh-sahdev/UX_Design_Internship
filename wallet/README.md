@@ -30,4 +30,4 @@ This is **not** a bank account, payment service, or actual wallet ledger. It doe
 
 ## Quality checks
 
-See [QA.md](./QA.md) for verification scenarios. Browser test automation is in [tests/wallet.spec.js](../tests/wallet.spec.js). Do not claim usability testing with research participants unless it actually occurs.
+See [QA.md](./QA.md) for the manual review checklist and [TEST-RESULTS.md](./TEST-RESULTS.md) for completed simulated-flow checks. Browser test automation is in [tests/wallet.spec.js](../tests/wallet.spec.js). Do not claim usability testing with research participants unless it actually occurs.
