@@ -18,8 +18,19 @@
     return { r: parseInt(h.slice(0,2),16)/255, g: parseInt(h.slice(2,4),16)/255, b: parseInt(h.slice(4,6),16)/255 };
   };
   const paint = (hex) => ({ type: "SOLID", color: rgb(hex) });
-  const fill = (node, hex) => { node.fills = [paint(hex)]; };
-  const stroke = (node, hex, weight=1) => { node.strokes = [paint(hex)]; node.strokeWeight = weight; };
+  const VARS = {};
+  // Bind palette fills to Figma variables when the API is supported.
+  function boundPaint(hex) {
+    const colour = VARS[hex.toUpperCase()];
+    const base = paint(hex);
+    if (colour && typeof figma.variables.setBoundVariableForPaint === "function") {
+      try { return figma.variables.setBoundVariableForPaint(base, "color", colour); }
+      catch (_) { return base; }
+    }
+    return base;
+  }
+  const fill = (node, hex) => { node.fills = [boundPaint(hex)]; };
+  const stroke = (node, hex, weight=1) => { node.strokes = [boundPaint(hex)]; node.strokeWeight = weight; };
   let FONTS = null;
   let page = null;
 
@@ -193,6 +204,7 @@
       const v=figma.variables.createVariable("color/"+name,collection,"COLOR");
       v.setValueForMode(mode,{...rgb(color),a:1});
       colors[name]=v;
+      VARS[color.toUpperCase()]=v;
     }
     for(const [name,value] of Object.entries({4:4,8:8,12:12,16:16,20:20,24:24,32:32})){
       const v=figma.variables.createVariable("space/"+name,collection,"FLOAT");

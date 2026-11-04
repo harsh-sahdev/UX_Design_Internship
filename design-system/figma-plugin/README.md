@@ -5,7 +5,7 @@ The existing `../figma-component-board.svg` and `../tokens.json` are editable **
 ## What it builds
 
 - **3 Figma pages**: `00 · Foundations`, `01 · Native components`, and `02 · Wallet & Checkout screens`. Fits Figma Starter's three-page limit.
-- **1 Figma variable collection** with 14 colour variables, 7 spacing variables and 3 corner-radius variables. A single Light mode is used so free accounts can run it.
+- **1 Figma variable collection** with 14 colour variables, 7 spacing variables and 3 corner-radius variables. A single Light mode is used so free accounts can run it. Matching palette fills are bound to the created colour variables when supported.
 - **Text and colour styles** matching the repository's actual CSS tokens.
 - **7 native component sets**, with variants: Button (12), Text field (4), Status badge (4), Transaction row (2), Checkout step (3), Navigation item (2), Balance card (2).
 - **4 editable design frames**: Wallet desktop + mobile, Checkout desktop + mobile. The screens contain named Figma shapes and text, plus native button instances.
