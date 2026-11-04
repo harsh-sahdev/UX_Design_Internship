@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A simple, accessible e-commerce checkout experience. Interactive internship prototype.">
+  <title>Checkout · Aster Goods</title>
+  <link rel="stylesheet" href="../design-system/tokens.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <a href="./index.html" class="brand">aster<span>.</span><small>GOODS</small></a>
+      <span class="header-note"><span aria-hidden="true">⌁</span> Secure-feeling design · demo only</span>
+      <a class="return-link" href="#order-summary">Review order ↗</a>
+    </header>
+
+    <main class="main">
+      <div class="intro">
+        <p class="eyebrow">Aster Goods / Checkout</p>
+        <h1>A little closer to<br>something good.</h1>
+        <p class="subline">Complete your order in two simple steps.</p>
+      </div>
+
+      <div class="checkout-layout" id="checkout-layout">
+        <div class="checkout-column">
+          <ol class="steps" aria-label="Checkout progress">
+            <li class="step current" id="step-delivery"><span class="step-number">01</span><span>Delivery</span></li>
+            <li class="step" id="step-payment"><span class="step-number">02</span><span>Payment</span></li>
+            <li class="step" id="step-done"><span class="step-number">03</span><span>Done</span></li>
+          </ol>
+
+          <section class="form-card" id="delivery-panel" aria-labelledby="delivery-heading">
+            <div class="section-top"><div><span class="step-kicker">STEP 01 / 02</span><h2 id="delivery-heading">Where should we deliver?</h2><p>Just the details needed to get your order there.</p></div><span class="section-number" aria-hidden="true">01</span></div>
+            <form id="delivery-form" novalidate>
+              <div class="two-col">
+                <div class="field"><label for="full-name">Full name <span class="required">*</span></label><input id="full-name" name="fullName" autocomplete="name" maxlength="80" placeholder="Alex Carter" required></div>
+                <div class="field"><label for="email">Email address <span class="required">*</span></label><input id="email" name="email" type="email" autocomplete="email" maxlength="100" placeholder="alex@example.com" required></div>
+              </div>
+              <div class="field"><label for="address">Street address <span class="required">*</span></label><input id="address" name="address" autocomplete="street-address" maxlength="120" placeholder="House number, street and area" required></div>
+              <div class="two-col">
+                <div class="field"><label for="city">City <span class="required">*</span></label><input id="city" name="city" autocomplete="address-level2" maxlength="60" placeholder="Your city" required></div>
+                <div class="field"><label for="postal">PIN code <span class="required">*</span></label><input id="postal" name="postal" inputmode="numeric" pattern="[0-9]{6}" autocomplete="postal-code" maxlength="6" placeholder="6-digit PIN" required></div>
+              </div>
+              <fieldset class="shipping-options">
+                <legend>Delivery speed</legend>
+                <label class="shipping-option selected"><input type="radio" name="shipping" value="standard" checked><span class="radio-mark"></span><span class="shipping-text"><strong>Standard delivery</strong><small>4–6 business days · Sample estimate</small></span><b>Free</b></label>
+                <label class="shipping-option"><input type="radio" name="shipping" value="express"><span class="radio-mark"></span><span class="shipping-text"><strong>Express delivery</strong><small>1–2 business days · Sample estimate</small></span><b>₹149</b></label>
+              </fieldset>
+              <p class="form-error" id="delivery-error" role="alert" hidden></p>
+              <button class="button button-primary proceed" type="submit">Continue to payment <span aria-hidden="true">→</span></button>
+            </form>
+          </section>
+
+          <section class="form-card" id="payment-panel" aria-labelledby="payment-heading" hidden>
+            <div class="section-top"><div><span class="step-kicker">STEP 02 / 02</span><h2 id="payment-heading">How would you like to pay?</h2><p>Choose a method for this demonstration.</p></div><span class="section-number" aria-hidden="true">02</span></div>
+            <div class="address-preview"><div><strong>Delivering to</strong><span id="address-preview"></span></div><button type="button" id="edit-address">Edit</button></div>
+            <form id="payment-form">
+              <fieldset class="shipping-options payment-options">
+                <legend>Payment method</legend>
+                <label class="shipping-option selected"><input type="radio" name="payment" value="demo-card" checked><span class="radio-mark"></span><span class="shipping-text"><strong>Demo card payment</strong><small>Simulated payment. No card details requested.</small></span><span aria-hidden="true">▣</span></label>
+                <label class="shipping-option"><input type="radio" name="payment" value="cod"><span class="radio-mark"></span><span class="shipping-text"><strong>Cash on delivery</strong><small>Example cash payment on arrival.</small></span><span aria-hidden="true">₹</span></label>
+              </fieldset>
+              <p class="safety-note"><span aria-hidden="true">ⓘ</span> This is a prototype. No personal details or payment information are sent to a server.</p>
+              <button class="button button-primary proceed" type="submit">Place demo order <span aria-hidden="true">→</span></button>
+            </form>
+          </section>
+
+          <section class="form-card success-card" id="success-panel" aria-labelledby="success-heading" hidden>
+            <span class="success-mark" aria-hidden="true">✓</span>
+            <p class="eyebrow">CHECKOUT COMPLETE</p>
+            <h2 id="success-heading">That was easy.</h2>
+            <p>We've simulated your checkout. No real purchase was made and no payment was charged.</p>
+            <div class="success-details"><span>Demo order reference</span><strong id="order-id">DEMO-000000</strong><span>Amount</span><strong id="order-total">₹0.00</strong></div>
+            <button class="button button-primary" id="restart" type="button">Start another demo</button>
+          </section>
+        </div>
+
+        <aside class="summary-card" id="order-summary" aria-labelledby="summary-heading">
+          <div class="summary-heading"><div><span class="step-kicker">YOUR SELECTION</span><h2 id="summary-heading">Order summary</h2></div><span class="items-badge">2 items</span></div>
+          <div class="product"><div class="product-picture shoes" aria-hidden="true">↗</div><div class="product-info"><strong>Cloud Knit Runner</strong><small>Sand / Size 8 · Qty 1</small></div><strong>₹2,799</strong></div>
+          <div class="product"><div class="product-picture tote" aria-hidden="true">◈</div><div class="product-info"><strong>Everyday Canvas Tote</strong><small>Natural / One size · Qty 1</small></div><strong>₹899</strong></div>
+          <div class="coupon"><label for="coupon-code">Have a promo code?</label><div class="coupon-row"><input id="coupon-code" type="text" maxlength="16" placeholder="Enter code" autocomplete="off"><button type="button" id="apply-coupon">Apply</button></div><p id="coupon-message" role="status" aria-live="polite"></p></div>
+          <dl class="totals">
+            <div><dt>Subtotal</dt><dd id="subtotal">₹3,698.00</dd></div>
+            <div><dt>Delivery</dt><dd id="delivery-cost">Free</dd></div>
+            <div><dt>Discount</dt><dd id="discount">−₹0.00</dd></div>
+            <div class="total-line"><dt>Total</dt><dd id="grand-total">₹3,698.00</dd></div>
+          </dl>
+          <p class="summary-footnote">All prices are sample INR amounts. Taxes are shown as included for this prototype.</p>
+        </aside>
+      </div>
+    </main>
+    <footer class="footer">Aster Goods · UI/UX internship checkout concept · Demo only</footer>
+  </div>
+</body>
+</html>
