@@ -8,10 +8,10 @@ Four connected UI/UX deliverables built around thoughtful interaction, honest pr
 
 | Assignment | Deliverable | Review |
 | --- | --- | --- |
-| **Task 1 · Fintech Mobile Wallet App Redesign** | Local-first money journal, ₹0.00 empty state, income/outflow, editing, filtering, privacy and export; native mobile/desktop Figma screens | [Open Wallet](./wallet/) · [View Figma wallet](<https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes?node-id=18-240>) |
+| **Task 1 · Fintech Mobile Wallet App Redesign** | Local-first money journal, ₹0.00 empty state, income/outflow, peer-transfer recording, editing, filtering, privacy and export; native mobile/desktop Figma screens | [Open Wallet](./wallet/) · [View Figma wallet](<https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes?node-id=18-240>) |
 | **Task 2 · Design System & Component Library** | Native Figma design tokens, 24 variables, text/colour styles, 7 component families and 29 variants; matching web showcase | [View native Figma components](<https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes?node-id=18-112>) · [Web showcase](./design-system/) |
 | **Task 3 · Interactive E-commerce Checkout** | Editable sample basket, delivery selection, discount, validation, payment review and simulated confirmation; Figma click-through flow | [Open Checkout](./checkout/) · [View Figma checkout](<https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes?node-id=18-307>) |
-| **Task 4 · End-to-end UX Case Study** | Ten-slide responsive presentation: problem, constraints, journey, IA, design direction, interaction decisions, QA and next steps | [Open case-study deck](./case-study/) |
+| **Task 4 · End-to-end UX Case Study** | Ten-slide responsive presentation: problem, hypothesis personas, journey map, low-fidelity wireframes, final UI, interaction decisions, QA and next steps | [Open case-study deck](./case-study/) |
 
 ### Figma source
 [**Interface Craft: Design System & Prototypes**](https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes) contains native editable design layers, reusable component variants, four overview designs and four linked interaction-state frames. Figma file view permissions and team-library publishing status are separate from creating the content and must be checked in the share dialog.
