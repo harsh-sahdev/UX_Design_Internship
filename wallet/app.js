@@ -67,7 +67,7 @@
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     } catch (_) {
-      showToast("Changes are visible now but couldn't be saved in this browser.");
+      notify("Changes are visible now but couldn't be saved in this browser.");
     }
   }
 
