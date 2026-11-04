@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1360" viewBox="0 0 1600 1360" role="img" aria-labelledby="title desc"><title id="title">Interface Craft reusable component board</title><desc id="desc">Editable vector reference for brand colors, typography, button states, form fields, status, wallet and checkout layouts</desc>
+<rect x="0" y="0" width="1600" height="1360" rx="0" fill="#F6F8F8" stroke="none" stroke-width="1"/>
+<g id="Page-header">
+<rect x="0" y="0" width="1600" height="146" rx="0" fill="#10262D" stroke="none" stroke-width="1"/>
+<text x="60" y="65" fill="#FFFFFF" font-size="39" font-family="Arial, sans-serif" font-weight="750" letter-spacing="-2">interface</text>
+<text x="225" y="65" fill="#A2D6C0" font-size="39" font-family="Arial, sans-serif" font-weight="750" letter-spacing="-2">craft.</text>
+<text x="60" y="98" fill="#A2D6C0" font-size="12" font-family="Arial, sans-serif" font-weight="700" letter-spacing="2.5">DESIGN SYSTEM  /  V1.0  /  INTERNSHIP EXERCISE</text>
+<text x="1220" y="62" fill="#FFFFFF" font-size="12" font-family="Arial, sans-serif" font-weight="600" letter-spacing="1">FOUNDATIONS  +  COMPONENTS</text>
+<text x="1220" y="91" fill="#BBD1CA" font-size="12" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">Editable SVG handoff board</text>
+</g>
+<g id="Foundations">
+<text x="60" y="202" fill="#172B31" font-size="28" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">01 / Foundations</text>
+<text x="60" y="235" fill="#61717A" font-size="14" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">Purposeful colours · clear hierarchy · consistent spacing</text>
+<g id="Colour-Primary">
+<rect x="60" y="263" width="352" height="98" rx="10" fill="#FFFFFF" stroke="#DFE6E6" stroke-width="1"/>
+<rect x="72" y="275" width="86" height="74" rx="7" fill="#205B50" stroke="#DFE6E6" stroke-width="1"/>
+<text x="173" y="306" fill="#172B31" font-size="17" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">Primary</text>
+<text x="173" y="331" fill="#61717A" font-size="13" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">#205B50</text>
+</g>
+<g id="Colour-Dark">
+<rect x="438" y="263" width="352" height="98" rx="10" fill="#FFFFFF" stroke="#DFE6E6" stroke-width="1"/>
+<rect x="450" y="275" width="86" height="74" rx="7" fill="#10262D" stroke="#DFE6E6" stroke-width="1"/>
+<text x="551" y="306" fill="#172B31" font-size="17" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">Dark</text>
+<text x="551" y="331" fill="#61717A" font-size="13" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">#10262D</text>
+</g>
+<g id="Colour-Ink">
+<rect x="816" y="263" width="352" height="98" rx="10" fill="#FFFFFF" stroke="#DFE6E6" stroke-width="1"/>
+<rect x="828" y="275" width="86" height="74" rx="7" fill="#172B31" stroke="#DFE6E6" stroke-width="1"/>
+<text x="929" y="306" fill="#172B31" font-size="17" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">Ink</text>
+<text x="929" y="331" fill="#61717A" font-size="13" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">#172B31</text>
+</g>
+<g id="Colour-Surface">
+<rect x="1194" y="263" width="352" height="98" rx="10" fill="#FFFFFF" stroke="#DFE6E6" stroke-width="1"/>
+<rect x="1206" y="275" width="86" height="74" rx="7" fill="#FFFFFF" stroke="#DFE6E6" stroke-width="1"/>
+<text x="1307" y="306" fill="#172B31" font-size="17" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">Surface</text>
+<text x="1307" y="331" fill="#61717A" font-size="13" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">#FFFFFF</text>
+</g>
+<g id="Colour-Canvas">
+<rect x="60" y="383" width="352" height="98" rx="10" fill="#FFFFFF" stroke="#DFE6E6" stroke-width="1"/>
+<rect x="72" y="395" width="86" height="74" rx="7" fill="#F6F8F8" stroke="#DFE6E6" stroke-width="1"/>
+<text x="173" y="426" fill="#172B31" font-size="17" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">Canvas</text>
+<text x="173" y="451" fill="#61717A" font-size="13" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">#F6F8F8</text>
+</g>
+<g id="Colour-Success">
+<rect x="438" y="383" width="352" height="98" rx="10" fill="#FFFFFF" stroke="#DFE6E6" stroke-width="1"/>
+<rect x="450" y="395" width="86" height="74" rx="7" fill="#277052" stroke="#DFE6E6" stroke-width="1"/>
+<text x="551" y="426" fill="#172B31" font-size="17" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">Success</text>
+<text x="551" y="451" fill="#61717A" font-size="13" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">#277052</text>
+</g>
+<g id="Colour-Danger">
+<rect x="816" y="383" width="352" height="98" rx="10" fill="#FFFFFF" stroke="#DFE6E6" stroke-width="1"/>
+<rect x="828" y="395" width="86" height="74" rx="7" fill="#A73542" stroke="#DFE6E6" stroke-width="1"/>
+<text x="929" y="426" fill="#172B31" font-size="17" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">Danger</text>
+<text x="929" y="451" fill="#61717A" font-size="13" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">#A73542</text>
+</g>
+<g id="Colour-Border">
+<rect x="1194" y="383" width="352" height="98" rx="10" fill="#FFFFFF" stroke="#DFE6E6" stroke-width="1"/>
+<rect x="1206" y="395" width="86" height="74" rx="7" fill="#DFE6E6" stroke="#DFE6E6" stroke-width="1"/>
+<text x="1307" y="426" fill="#172B31" font-size="17" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">Border</text>
+<text x="1307" y="451" fill="#61717A" font-size="13" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">#DFE6E6</text>
+</g>
+</g>
+<g id="Typography">
+<text x="60" y="539" fill="#172B31" font-size="28" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">02 / Typography</text>
+<text x="60" y="564" fill="#61717A" font-size="14" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">System UI font · regular 400 / semibold 600 / bold 750</text>
+<rect x="60" y="583" width="1480" height="104" rx="12" fill="#FFFFFF" stroke="#DFE6E6" stroke-width="1"/>
+<text x="82" y="641" fill="#61717A" font-size="12" font-family="Arial, sans-serif" font-weight="650" letter-spacing="0">Display / 36</text>
+<text x="235" y="646" fill="#172B31" font-size="36" font-family="Arial, sans-serif" font-weight="750" letter-spacing="-1">Your money, in view.</text>
+<text x="900" y="626" fill="#61717A" font-size="12" font-family="Arial, sans-serif" font-weight="650" letter-spacing="0">Section / 20</text>
+<text x="900" y="656" fill="#172B31" font-size="20" font-family="Arial, sans-serif" font-weight="650" letter-spacing="-0.3">Everyday decisions, made clear.</text>
+</g>
+<g id="Button component variants">
+<text x="60" y="750" fill="#172B31" font-size="22" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">03 / Buttons</text>
+<rect x="60" y="777" width="468" height="249" rx="12" fill="#FFFFFF" stroke="#DFE6E6" stroke-width="1"/>
+<text x="80" y="816" fill="#61717A" font-size="12" font-family="Arial, sans-serif" font-weight="700" letter-spacing="1">BUTTON / STATE</text>
+<rect x="80" y="839" width="199" height="46" rx="7" fill="#205B50" stroke="#205B50" stroke-width="1"/>
+<text x="96" y="869" fill="#FFFFFF" font-size="14" font-family="Arial, sans-serif" font-weight="650" letter-spacing="0">Primary action</text>
+<rect x="295" y="839" width="210" height="46" rx="7" fill="#FFFFFF" stroke="#DFE6E6" stroke-width="1"/>
+<text x="311" y="869" fill="#172B31" font-size="14" font-family="Arial, sans-serif" font-weight="650" letter-spacing="0">Secondary</text>
+<rect x="80" y="901" width="199" height="46" rx="7" fill="#FFFFFF" stroke="#E6BEC4" stroke-width="1"/>
+<text x="96" y="931" fill="#A73542" font-size="14" font-family="Arial, sans-serif" font-weight="650" letter-spacing="0">Destructive</text>
+<rect x="295" y="901" width="210" height="46" rx="7" fill="#ECEEEE" stroke="#DFE6E6" stroke-width="1"/>
+<text x="311" y="931" fill="#9CABA8" font-size="14" font-family="Arial, sans-serif" font-weight="650" letter-spacing="0">Disabled</text>
+<text x="80" y="993" fill="#61717A" font-size="11" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">Min. 44px target · 6px radius · clear focus ring</text>
+</g>
+<g id="Field component variants">
+<text x="565" y="750" fill="#172B31" font-size="22" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">04 / Fields</text>
+<rect x="565" y="777" width="469" height="249" rx="12" fill="#FFFFFF" stroke="#DFE6E6" stroke-width="1"/>
+<text x="586" y="812" fill="#61717A" font-size="11" font-family="Arial, sans-serif" font-weight="700" letter-spacing="1">TEXT FIELD / DEFAULT</text>
+<rect x="585" y="829" width="424" height="43" rx="7" fill="#FFFFFF" stroke="#DFE6E6" stroke-width="1"/>
+<text x="598" y="856" fill="#61717A" font-size="13" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">Enter a description</text>
+<text x="586" y="900" fill="#A73542" font-size="11" font-family="Arial, sans-serif" font-weight="700" letter-spacing="1">TEXT FIELD / ERROR</text>
+<rect x="585" y="913" width="424" height="43" rx="7" fill="#FFFFFF" stroke="#A73542" stroke-width="2"/>
+<text x="598" y="940" fill="#172B31" font-size="13" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">Invalid amount</text>
+<text x="586" y="979" fill="#A73542" font-size="11" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">Enter a value using at most two decimal places.</text>
+</g>
+<g id="Status components">
+<text x="1073" y="750" fill="#172B31" font-size="22" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">05 / Status</text>
+<rect x="1073" y="777" width="467" height="249" rx="12" fill="#FFFFFF" stroke="#DFE6E6" stroke-width="1"/>
+<text x="1094" y="812" fill="#61717A" font-size="11" font-family="Arial, sans-serif" font-weight="700" letter-spacing="1">BADGE / SEMANTIC STATES</text>
+<rect x="1094" y="832" width="129" height="37" rx="6" fill="#EAF3EF" stroke="none" stroke-width="1"/>
+<text x="1111" y="856" fill="#277052" font-size="13" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">● Success</text>
+<rect x="1236" y="832" width="137" height="37" rx="6" fill="#FDEDED" stroke="none" stroke-width="1"/>
+<text x="1253" y="856" fill="#A73542" font-size="13" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">● Error</text>
+<rect x="1384" y="832" width="128" height="37" rx="6" fill="#EFF2F2" stroke="none" stroke-width="1"/>
+<text x="1401" y="856" fill="#61717A" font-size="13" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">● Neutral</text>
+<path d="M1095 898L1507 898" stroke="#DFE6E6" stroke-width="1"/>
+<text x="1094" y="928" fill="#61717A" font-size="11" font-family="Arial, sans-serif" font-weight="700" letter-spacing="1">A11Y / STATE RULES</text>
+<text x="1094" y="955" fill="#172B31" font-size="13" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">• Never use colour alone for feedback.</text>
+<text x="1094" y="980" fill="#172B31" font-size="13" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">• Error copy explains what to fix.</text>
+</g>
+<g id="Wallet pattern">
+<text x="60" y="1110" fill="#172B31" font-size="22" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">06 / Wallet overview</text>
+<rect x="60" y="1134" width="720" height="166" rx="12" fill="#10262D" stroke="none" stroke-width="1"/>
+<text x="87" y="1172" fill="#B2C9C1" font-size="12" font-family="Arial, sans-serif" font-weight="700" letter-spacing="1">RECORDED BALANCE</text>
+<text x="87" y="1232" fill="#FFFFFF" font-size="49" font-family="Arial, sans-serif" font-weight="750" letter-spacing="-1">₹0.00</text>
+<text x="87" y="1276" fill="#B2C9C1" font-size="13" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">Calculated from entries on this device · not a bank balance</text>
+</g>
+<g id="Checkout pattern">
+<text x="824" y="1110" fill="#172B31" font-size="22" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">07 / Checkout stepper</text>
+<rect x="824" y="1134" width="716" height="166" rx="12" fill="#FFFFFF" stroke="#DFE6E6" stroke-width="1"/>
+<circle cx="867" cy="1186" r="22" fill="#205B50"/>
+<text x="862" y="1192" fill="#FFFFFF" font-size="16" font-family="Arial, sans-serif" font-weight="750" letter-spacing="0">1</text>
+<path d="M896 1186L1059 1186" stroke="#DFE6E6" stroke-width="2"/>
+<text x="844" y="1244" fill="#205B50" font-size="15" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">Delivery</text>
+<text x="844" y="1270" fill="#61717A" font-size="12" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">Current step</text>
+<circle cx="1088" cy="1186" r="22" fill="#E6EEEA"/>
+<text x="1083" y="1192" fill="#61717A" font-size="16" font-family="Arial, sans-serif" font-weight="750" letter-spacing="0">2</text>
+<path d="M1117 1186L1280 1186" stroke="#DFE6E6" stroke-width="2"/>
+<text x="1065" y="1244" fill="#61717A" font-size="15" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">Payment</text>
+<text x="1065" y="1270" fill="#61717A" font-size="12" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">Pending</text>
+<circle cx="1309" cy="1186" r="22" fill="#E6EEEA"/>
+<text x="1304" y="1192" fill="#61717A" font-size="16" font-family="Arial, sans-serif" font-weight="750" letter-spacing="0">3</text>
+<text x="1286" y="1244" fill="#61717A" font-size="15" font-family="Arial, sans-serif" font-weight="700" letter-spacing="0">Complete</text>
+<text x="1286" y="1270" fill="#61717A" font-size="12" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">Pending</text>
+</g>
+<text x="60" y="1338" fill="#61717A" font-size="11" font-family="Arial, sans-serif" font-weight="400" letter-spacing="0">Interface Craft · Import this SVG into Figma to edit vector layers. Create native components and variants in Figma.</text>
+</svg>
