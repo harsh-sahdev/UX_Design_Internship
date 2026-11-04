@@ -18,19 +18,19 @@ Use 1440 × 900 desktop frames and 390 × 844 mobile frames. The layouts are res
 
 | Figma variable | Hex | Intended use |
 | --- | --- | --- |
-| `color/primary` | `#6651DC` | Primary actions and active states |
-| `color/primary-soft` | `#F0EDFF` | Subtle selected backgrounds |
-| `color/text` | `#172035` | Titles and body |
-| `color/muted` | `#6E788C` | Supporting labels |
-| `color/canvas` | `#F5F6FA` | Main background |
+| `color/primary` | `#205B50` | Primary actions and active states |
+| `color/primary-soft` | `#EAF3EF` | Subtle selected backgrounds |
+| `color/text` | `#172B31` | Titles and body |
+| `color/muted` | `#61717A` | Supporting labels |
+| `color/canvas` | `#F6F8F8` | Main background |
 | `color/surface` | `#FFFFFF` | Cards and controls |
-| `color/border` | `#E6E8EF` | Dividers and outlines |
-| `color/success` | `#12805C` | Positive money movement |
-| `color/error` | `#B43448` | Validation feedback |
+| `color/border` | `#DFE6E6` | Dividers and outlines |
+| `color/success` | `#277052` | Positive money movement |
+| `color/error` | `#A73542` | Validation feedback |
 
 Spacing tokens: `space/1=4`, `space/2=8`, `space/3=12`, `space/4=16`, `space/5=20`, `space/6=24`, `space/8=32` (px).
 
-Radii: `radius/control=10`, `radius/card=16`, `radius/hero=23` (px).
+Radii: `radius/control=6`, `radius/card=10`, `radius/hero=12` (px).
 
 Typography: system sans-serif, regular 400, semibold 600, bold 750. Use 14px body, 12px labels, 20px section heading, and 36px display as a starting point.
 
@@ -43,7 +43,7 @@ Typography: system sans-serif, regular 400, semibold 600, bold 750. Use 14px bod
 | Transaction row | Direction: In / Out | Name, description, date, signed amount |
 | Status badge | Type: Neutral / Success / Warning | Include visible text, not only color |
 | Wallet card | Balance: Visible / Hidden | Privacy toggle should hide amounts |
-| Dialog | Type: Transfer / Top-up / Bill | Close, cancel, submit, validation |
+| Dialog | Type: Money in / Money out / Edit | Close, cancel, submit, validation |
 | Checkout step | State: Pending / Current / Complete | Text + semantic step number |
 
 ## Design quality checklist
@@ -59,3 +59,7 @@ Typography: system sans-serif, regular 400, semibold 600, bold 750. Use 14px bod
 ## Handoff to implementation
 
 The canonical implementation values are in [tokens.css](./tokens.css). Live examples appear in [the component showcase](./index.html). Differences discovered during implementation should be reconciled before final presentation.
+
+## Brand consistency
+
+Interface Craft is the umbrella identity. Wallet, Checkout, and Design System are sections, not independent companies. Wordmark rules are in `../assets/brand.css`.

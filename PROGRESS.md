@@ -1,6 +1,6 @@
 # Current status
 
-## Task 1: Mira wallet / money journal
+## Task 1: Interface Craft Wallet / money journal
 
 - Responsive UI pass implemented. Removed the prefilled ₹48,560.75 balance, invented transactions, pretend bank card and static spending breakdown.
 - Money-in, money-out, edit/delete, search, filters, privacy toggle, CSV export and clear-all confirmation implemented.
@@ -16,3 +16,7 @@
 ## Submission
 
 Repository remains private. Only submit after two selected assignments pass the stated requirements, are browser-checked, and the public repository and evidence requirements are met.
+
+## Brand consistency
+
+Wallet, Checkout and Design System share the same Interface Craft wordmark and tokens.

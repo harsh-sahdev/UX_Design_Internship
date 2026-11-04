@@ -1,16 +1,16 @@
 :root {
   color-scheme: light;
-  --ink: #172b31;
-  --muted: #61717a;
+  --ink: var(--color-ink);
+  --muted: var(--color-muted);
   --subtle: #8a969d;
   --paper: #fff;
-  --canvas: #f6f8f8;
-  --line: #dfe6e6;
-  --forest: #10262d;
-  --accent: #205b50;
+  --canvas: var(--color-canvas);
+  --line: var(--color-border);
+  --forest: var(--color-dark);
+  --accent: var(--color-primary);
   --mint: #a2d6c0;
-  --error: #a73542;
-  font-family: "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif;
+  --error: var(--color-danger);
+  font-family: var(--font-ui);
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }

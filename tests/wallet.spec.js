@@ -95,7 +95,7 @@ test("search, filters and CSV export work", async ({ page }) => {
   const downloadPromise = page.waitForEvent("download");
   await page.locator("#export-top").click();
   const download = await downloadPromise;
-  expect(download.suggestedFilename()).toMatch(/^mira-records-\d{4}-\d{2}-\d{2}\.csv$/);
+  expect(download.suggestedFilename()).toMatch(/^interface-craft-wallet-\d{4}-\d{2}-\d{2}\.csv$/);
 });
 
 test("captures desktop and mobile empty states", async ({ page }) => {

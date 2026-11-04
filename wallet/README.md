@@ -1,6 +1,6 @@
 # Task 1: Fintech wallet interface
 
-Mira is a responsive personal money journal built using HTML, CSS and vanilla JavaScript. It records amounts manually on the current device, so it is useful without a server or financial provider.
+Interface Craft Wallet is a responsive personal money journal built using HTML, CSS and vanilla JavaScript. It records amounts manually on the current device, so it is useful without a server or financial provider.
 
 ## What's included
 
@@ -31,3 +31,4 @@ This is **not** a bank account, payment service, or actual wallet ledger. It doe
 ## Quality checks
 
 See [QA.md](./QA.md) for the manual review checklist and [TEST-RESULTS.md](./TEST-RESULTS.md) for completed simulated-flow checks. Browser test automation is in [tests/wallet.spec.js](../tests/wallet.spec.js). Do not claim usability testing with research participants unless it actually occurs.
+Brand assets: `../assets/brand.css` and `../design-system/tokens.css`. The original internal storage key stays unchanged so existing browser entries remain accessible.

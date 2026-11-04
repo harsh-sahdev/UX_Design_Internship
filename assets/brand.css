@@ -1,0 +1,10 @@
+/* One wordmark for Wallet, Checkout and Design System */
+.ic-brand{display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;width:max-content;max-width:100%;text-decoration:none;line-height:1.08;font-family:var(--font-ui)}
+.ic-name{font-weight:760;font-size:21px;letter-spacing:-.065em;white-space:nowrap}
+.ic-name>span{color:var(--color-primary)}
+.ic-section{font-weight:700;letter-spacing:.16em;color:var(--color-muted);font-size:9px;text-transform:uppercase}
+.rail .ic-brand{color:#f3faf7;padding-left:8px}
+.rail .ic-name>span{color:#a2d6c0}
+.rail .ic-section{color:#abc1bc}
+.ic-short{display:none}
+@media(max-width:650px){.rail .ic-name,.rail .ic-section{display:none}.rail .ic-short{display:block;font-size:25px;color:#fff;font-weight:780;letter-spacing:-.06em}.rail .ic-brand{padding-left:0}.header .ic-name{font-size:19px}}

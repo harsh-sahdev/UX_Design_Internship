@@ -12,7 +12,7 @@
     .header { display:flex; align-items:center; justify-content:space-between; gap:20px; margin-bottom:36px; }
     .logo { font-weight:850; font-size:21px; letter-spacing:-.055em; text-decoration:none; }
     .logo span { color:var(--color-primary); }
-    .back { text-decoration:none; color:#6152c7; font-size:13px; font-weight:700; }
+    .back { text-decoration:none; color:#205b50; font-size:13px; font-weight:700; }
     h1 { font-size:clamp(30px,5vw,48px); letter-spacing:-.055em; margin:0 0 13px; }
     .lede { max-width:670px; color:var(--color-muted); line-height:1.7; margin:0 0 39px; }
     .eyebrow { color:var(--color-primary); font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.13em; margin:0 0 10px; }
@@ -51,7 +51,7 @@
     .sample-card span { color:#bfc8da; font-size:12px; }
     .steps { display:flex; flex-wrap:wrap; gap:10px; }
     .step { border-radius:9px; padding:9px 13px; background:#f3f4f7; font-size:12px; color:#737d90; }
-    .step.active { background:var(--color-primary-soft); color:#5a46c8; font-weight:800; }
+    .step.active { background:var(--color-primary-soft); color:#205b50; font-weight:800; }
     .notes { line-height:1.75; font-size:13px; color:#647086; padding-left:20px; }
     code { font-size:12px; }
     dialog { width:min(92vw,410px); border:1px solid var(--color-border); box-shadow:0 25px 75px #20243b45; border-radius:17px; padding:25px; }
@@ -61,22 +61,23 @@
     .dialog-footer { display:flex; justify-content:flex-end; gap:10px; margin-top:20px; }
     @media(max-width:600px) { .header { align-items:flex-start; } .type-grid,.field-grid { grid-template-columns:1fr; } .section { padding:20px; } }
   </style>
+  <link rel="stylesheet" href="../assets/brand.css">
 </head>
 <body>
   <main class="layout">
-    <header class="header"><a class="logo" href="../README.md">interface<span>craft.</span></a><a class="back" href="../wallet/index.html">Explore wallet ↗</a></header>
+    <header class="header"><a class="logo ic-brand" href="../index.html" aria-label="Interface Craft home"><span class="ic-name">interface<span>craft.</span></span><small class="ic-section">Design system</small></a><a class="back" href="../wallet/index.html">Explore wallet ↗</a></header>
     <p class="eyebrow">Design system · Version 1.0</p>
     <h1>Small set. Consistent experience.</h1>
     <p class="lede">Foundational tokens and reusable UI patterns for the internship prototypes. This is a practical handoff reference, not a claim of having created a native Figma library.</p>
 
     <section class="section" aria-labelledby="colours"><h2 id="colours">01. Colour palette</h2><p class="caption">Purpose-led colours, with text/background contrast considered.</p>
       <div class="swatches">
-        <div class="swatch"><div class="swatch-color" style="background:#6651dc"></div><div class="swatch-label"><strong>Primary</strong><code>#6651DC</code></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#172035"></div><div class="swatch-label"><strong>Ink</strong><code>#172035</code></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#f5f6fa"></div><div class="swatch-label"><strong>Canvas</strong><code>#F5F6FA</code></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#12805c"></div><div class="swatch-label"><strong>Success</strong><code>#12805C</code></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#b43448"></div><div class="swatch-label"><strong>Danger</strong><code>#B43448</code></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#e6e8ef"></div><div class="swatch-label"><strong>Border</strong><code>#E6E8EF</code></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#205b50"></div><div class="swatch-label"><strong>Primary</strong><code>#205b50</code></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#172b31"></div><div class="swatch-label"><strong>Ink</strong><code>#172b31</code></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#f6f8f8"></div><div class="swatch-label"><strong>Canvas</strong><code>#f6f8f8</code></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#277052"></div><div class="swatch-label"><strong>Success</strong><code>#277052</code></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#a73542"></div><div class="swatch-label"><strong>Danger</strong><code>#a73542</code></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#dfe6e6"></div><div class="swatch-label"><strong>Border</strong><code>#dfe6e6</code></div></div>
       </div>
     </section>
 
@@ -97,7 +98,7 @@
     </section>
 
     <section class="section" aria-labelledby="rules"><h2 id="rules">06. Usage rules</h2><p class="caption">A handoff checklist to help another designer or developer apply the system.</p>
-      <ul class="notes"><li>Spacing scale: 4, 8, 12, 16, 20, 24 and 32px.</li><li>Corner radii: 10px for controls, 16px for cards, 23px for key surfaces.</li><li>Minimum target height for prominent buttons: 43px.</li><li>Always show a visible focus indicator and a text label for inputs.</li><li>Never communicate errors by colour alone; pair colour with clear text.</li><li>Use Figma component variants for default, hover, focus, error, and disabled states.</li></ul>
+      <ul class="notes"><li>Spacing scale: 4, 8, 12, 16, 20, 24 and 32px.</li><li>Corner radii: 6px for controls, 10px for cards, 12px for key surfaces.</li><li>Minimum target height for prominent buttons: 43px.</li><li>Always show a visible focus indicator and a text label for inputs.</li><li>Never communicate errors by colour alone; pair colour with clear text.</li><li>Use Figma component variants for default, hover, focus, error, and disabled states.</li></ul>
       <p class="caption">See <a href="./figma-handoff.md">the Figma handoff specification</a> for component naming and frame structure.</p>
     </section>
   </main>
