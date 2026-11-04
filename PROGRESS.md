@@ -4,10 +4,10 @@ Updated 5 November 2026.
 
 | Task | Implemented | Remaining external verification |
 | --- | --- | --- |
-| **1 · Wallet** | Responsive running app, Playwright checks, native 390px and 1440px Figma reference screens, clickable entry states | Reviewer visual accessibility pass |
+| **1 · Wallet** | Responsive running app with balance overview, income/outflow and peer-transfer recording, Playwright checks, native 390px and 1440px Figma reference screens, clickable entry states | Reviewer visual accessibility pass |
 | **2 · Design system** | 24 Figma variables, text/colour styles, seven native component sets with 29 variants, source tokens and web showcase | Verify the file's external viewer permissions and whether team publishing is available |
 | **3 · Checkout** | Functional example basket and validation; desktop/mobile Figma frames; linked payment and confirmation screens | Confirm responsive visual QA and form behavior |
-| **4 · Case study** | [10-slide responsive deck](./case-study/) and accompanying notes, with print/PDF layout | Final slide-by-slide visual inspection |
+| **4 · Case study** | [10-slide responsive deck](./case-study/) with problem framing, hypothesis personas, journey map, low-fidelity wireframes, final UI and print/PDF layout | Final slide-by-slide visual inspection |
 
 ## Native Figma document
 
