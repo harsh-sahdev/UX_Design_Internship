@@ -213,7 +213,9 @@
     const oldValue = old ? (old.kind === "in" ? old.amount : -old.amount) : 0;
     const newValue = kind === "in" ? paise : -paise;
     if (balance() - oldValue + newValue < 0) {
-      return formError("This change would make your recorded balance negative. Adjust another entry first.", $("entry-amount"));
+      return formError(old
+        ? "This edit would make your recorded balance negative. Adjust another entry first."
+        : "This is more than your recorded balance. Add money in first, or enter a smaller amount.", $("entry-amount"));
     }
     const id = old ? old.id : (globalThis.crypto && typeof crypto.randomUUID === "function")
       ? crypto.randomUUID() : Date.now().toString(16) + Math.random().toString(16).slice(2);
