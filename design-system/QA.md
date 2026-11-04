@@ -8,14 +8,19 @@
 - [x] Typography scale and font family documented.
 - [x] Reference board grouped by component family in editable SVG.
 
-## Native Figma file (requires Figma account)
+## Native Figma file (verified existence; external sharing still unverified)
 
-- [ ] Create the native Figma file and share its URL.
-- [ ] Create Figma variables mapped to the supplied JSON.
-- [ ] Use Auto Layout and reusable components, not independent visual copies.
-- [ ] Create default, hover, focus, error and disabled variants.
-- [ ] Create 1440px desktop and 390px mobile screen frames.
-- [ ] Test prototype connections and inspect components at 100% zoom.
+- [x] Create a native editable Figma file and document its URL: [Interface Craft](https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes).
+- [x] Create 24 native Figma variables and document the corresponding source tokens.
+- [x] Create reusable native component families: 7 sets and 29 variants.
+- [x] Create 1440px desktop and 390px mobile reference screens for Wallet and Checkout.
+- [x] Define two prototype starting points for Wallet and Checkout flows.
+- [ ] Confirm all intended component states (default, hover, focus, error and disabled) are represented and correctly configured.
+- [ ] Inspect native components at 100% zoom and manually follow every prototype transition.
+- [ ] Verify external viewer access using a signed-out/private browser: **Share → General access → Anyone with the link → Can view**.
+- [ ] Verify team library publication separately, only if the Figma plan permits it.
+
+**Evidence boundary:** The native document and the listed design inventory were inspected through the connected Figma file in earlier work. The public GitHub Actions workflow verifies the reproducible builder smoke harness and browser UI; it does **not** establish anonymous Figma access, team-library publication or completion of manual accessibility checks.
 
 ## Usability/accessibility
 
@@ -24,6 +29,4 @@
 - [ ] Test keyboard focus visibility in web components.
 - [ ] Ensure controls have at least a 44px target in high-priority actions.
 
-**Notes:** Web and SVG/JSON assets are implemented. Native Figma-only checks remain open.
-
-Native builder source and mock harness exist at `figma-plugin/` and `../tests/figma-builder-smoke.cjs`. This is not a substitute for inspecting the generated native Figma file. Do not tick the native-file checklist boxes without the actual file URL.
+**Notes:** Web, SVG/JSON and native Figma deliverables exist. Manual accessibility, external sharing and optional library publication checks remain open. The native builder and smoke harness live in `figma-plugin/` and `../tests/figma-builder-smoke.cjs`; they are supplementary evidence, not a substitute for external reviewer access.
