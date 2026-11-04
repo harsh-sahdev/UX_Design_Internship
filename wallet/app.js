@@ -4,7 +4,7 @@
   const KEY = "mira-journal-v2";
   const categories = {
     in: ["Income", "Cash added", "Refund", "Gift", "Other"],
-    out: ["Shopping", "Food & drink", "Transport", "Bills", "Other"]
+    out: ["Shopping", "Food & drink", "Transport", "Bills", "Peer transfer", "Other"]
   };
   const money = new Intl.NumberFormat("en-IN", {
     style: "currency", currency: "INR", minimumFractionDigits: 2, maximumFractionDigits: 2
@@ -149,19 +149,27 @@
   }
 
   function openEntry(nextKind, entryId = null) {
-    kind = nextKind;
+    const transferMode = nextKind === "transfer";
+    kind = transferMode ? "out" : nextKind;
     editingId = entryId;
     const existing = entryId ? entries.find((entry) => entry.id === entryId) : null;
+    const existingTransfer = Boolean(existing && existing.kind === "out" && existing.category === "Peer transfer");
+    const isTransfer = transferMode || existingTransfer;
     previousFocus = document.activeElement;
     $("entry-form").reset();
     $("entry-error").hidden = true;
-    $("dialog-heading").textContent = existing ? "Edit entry" : kind === "in" ? "Money in" : "Money out";
-    $("save-entry").textContent = existing ? "Save changes" : "Save entry";
+    $("dialog-heading").textContent = existing ? (isTransfer ? "Edit peer transfer" : "Edit entry") : isTransfer ? "Peer transfer" : kind === "in" ? "Money in" : "Money out";
+    $("save-entry").textContent = existing ? "Save changes" : isTransfer ? "Record transfer" : "Save entry";
     $("delete-entry").hidden = !existing;
-    $("dialog-description").textContent = kind === "in"
-      ? "Record money you've received or added. This does not move money."
-      : "Record money you've spent or sent elsewhere. This does not send a payment.";
-    $("entry-category").replaceChildren(...categories[kind].map((category) => {
+    $("entry-description-label").textContent = isTransfer ? "Recipient or note" : "Description";
+    $("entry-description").placeholder = isTransfer ? "Who are you recording this for?" : "What was this for?";
+    $("dialog-description").textContent = isTransfer
+      ? "Record a person-to-person send in your journal. This prototype does not move real money."
+      : kind === "in"
+        ? "Record money you've received or added. This does not move money."
+        : "Record money you've spent. This does not send a payment.";
+    const categoryOptions = isTransfer ? ["Peer transfer"] : categories[kind];
+    $("entry-category").replaceChildren(...categoryOptions.map((category) => {
       const option = document.createElement("option");
       option.value = category;
       option.textContent = category;
