@@ -17,6 +17,10 @@ Pages: `00 · Foundations`, `01 · Native components`, and `02 · Wallet & Check
 
 Four initial Figma screens: Wallet/Desktop 1440, Wallet/Mobile 390, Checkout/Desktop 1440, Checkout/Mobile 390. Four additional mobile interaction states: Wallet/Add income, Wallet/Recorded entry, Checkout/Payment, Checkout/Confirmation. Prototype navigation links connect the two main journeys.
 
+## Latest verified CI evidence
+
+As of **5 November 2026**, GitHub Actions run [#41916508547](https://github.com/harsh-sahdev/UX_Design_Internship/actions/runs/41916508547) completed successfully on commit [`080c8455`](https://github.com/harsh-sahdev/UX_Design_Internship/commit/080c84556c300091a7b0a4e7d44a2b05ad71718e). The `wallet` job reports successful Figma-builder validation, Playwright browser tests, and screenshot artifact upload. The failure-artifact step was skipped because tests passed. This confirms automated repository checks, **not** anonymous Figma permissions, a manual accessibility audit, or a Datheon portal submission.
+
 ## Running QA
 
 The public [browser QA workflow](https://github.com/harsh-sahdev/UX_Design_Internship/actions/workflows/wallet-qa.yml) runs Playwright tests and collects screenshots. Reviewer paths and verification constraints are listed in [SUBMISSION.md](./SUBMISSION.md). The case study separates design hypotheses from verified product behavior.
