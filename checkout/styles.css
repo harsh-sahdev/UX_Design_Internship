@@ -132,3 +132,17 @@ body { background:var(--color-canvas); color:var(--color-ink); }
 .cart-error{font-size:12px;padding:10px;background:var(--color-danger-soft);color:var(--color-danger);border-radius:6px}
 [hidden]{display:none!important}
 @media(max-width:440px){.cart-product{gap:9px}.cart-art{width:54px;height:54px}.product-art{width:50px;height:50px}.cart-price{font-size:12px}}
+
+/* Narrow-width QA: avoid minimum-content grid expansion at 360px. */
+.checkout-layout,.form-card,.summary-card,.checkout-column{min-width:0}
+@media(max-width:960px){.checkout-layout{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:440px){
+ .steps{gap:3px}
+ .step{gap:5px;font-size:11px}
+ .step:not(:last-child)::after{width:9px;margin:0 5px}
+ .shipping-option{padding:13px 9px;gap:8px}
+ .header{gap:8px}
+ .return-link{font-size:11px}
+ .cart-product-info{overflow-wrap:anywhere}
+ .summary-heading{gap:8px}
+}

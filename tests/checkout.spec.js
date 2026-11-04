@@ -78,7 +78,7 @@ test("address can be edited and demo order completes without payment data", asyn
   await expect(page.locator("#success-panel")).toBeVisible();
   await expect(page.locator("#order-id")).toContainText("DEMO-");
   await expect(page.locator("#order-total")).toContainText("3,698.00");
-  await expect(page.locator("#cart-adjust")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Add one Cloud Knit Runner" })).toBeDisabled();
   await page.getByRole("button", { name: "Start again" }).click();
   await expect(page.locator("#delivery-panel")).toBeVisible();
   await expect(page.locator("#full-name")).toHaveValue("");
@@ -87,7 +87,9 @@ test("address can be edited and demo order completes without payment data", asyn
 test("desktop and mobile checkout remain inside viewport", async ({ page }) => {
   for (const width of [360, 390, 768, 1440]) {
     await page.setViewportSize({ width, height: 900 });
-    const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
+    const detail = await page.evaluate(() => ({ page: document.documentElement.scrollWidth, viewport: window.innerWidth, outliers: [...document.querySelectorAll("body *")].filter((el) => el.getBoundingClientRect().right > innerWidth + 1).slice(0, 8).map((el) => ({ tag: el.tagName, selector: el.className, right: Math.round(el.getBoundingClientRect().right) })) }));
+    if (detail.page > detail.viewport + 1) console.log("OVERFLOW DIAGNOSTIC", width, JSON.stringify(detail));
+    const overflow = detail.page > detail.viewport + 1;
     expect(overflow, "Horizontal overflow at " + width).toBe(false);
   }
 });
