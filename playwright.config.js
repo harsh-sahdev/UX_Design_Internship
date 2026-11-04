@@ -9,7 +9,7 @@ module.exports = defineConfig({
     headless: true
   },
   webServer: {
-    command: "python -m http.server 8000 --bind 127.0.0.1",
+    command: "python3 -m http.server 8000 --bind 127.0.0.1",
     url: "http://127.0.0.1:8000/wallet/",
     reuseExistingServer: !process.env.CI,
     timeout: 15000

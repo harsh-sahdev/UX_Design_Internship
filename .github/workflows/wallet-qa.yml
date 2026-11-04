@@ -1,0 +1,33 @@
+name: Wallet browser QA
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  wallet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install test dependencies
+        run: npm install --no-audit --no-fund
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run browser tests
+        run: npm test
+      - name: Save test failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wallet-playwright-failures
+          path: |
+            test-results/
+            playwright-report/
+          if-no-files-found: ignore
