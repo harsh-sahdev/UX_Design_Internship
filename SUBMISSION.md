@@ -1,36 +1,33 @@
-# Internship submission guide
+# Interface Craft · Internship reviewer guide
 
-**Repository:** https://github.com/harsh-sahdev/UX_Design_Internship
+**Source repository:** https://github.com/harsh-sahdev/UX_Design_Internship  
+**Design file:** https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes  
+**Case study:** [10-slide presentation](./case-study/)
 
-**Repository visibility:** public.
+## Four tasks and entry points
 
-## Tasks to select in the portal
+| Task | Evidence | Review route |
+| --- | --- | --- |
+| **1. Fintech Mobile Wallet App Redesign** | Responsive wallet with a truthful zero balance, manually recorded income and expenses, edit/delete, privacy and CSV export. Includes native desktop and mobile Figma references and a sample interactive entry flow. | [Wallet](./wallet/) · [Figma mobile](<https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes?node-id=18-240>) |
+| **2. Design System & Component Library** | Native Figma collection with **24 variables**, text and colour styles, **7 component families / 29 variants**; matching code tokens and web documentation. | [Figma library](<https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes?node-id=18-112>) · [Design system web demo](./design-system/) |
+| **3. Interactive E-commerce Checkout** | Editable sample basket, shipping, discount, delivery validation, back/edit path, payment selection and demo confirmation. Native Figma delivery→review→confirmation flow. | [Checkout](./checkout/) · [Figma mobile](<https://www.figma.com/design/fIEafLV381i2Fda5Vwbdsg/Interface-Craft---Design-System---Prototypes?node-id=18-307>) |
+| **4. End-to-end UX Case Study** | Responsive 10-slide deck covering the challenge, scope, user task hypotheses, information architecture, mobile direction, reusable components, interactions, QA evidence and next steps. | [Case study](./case-study/) · [Study notes](./case-study/README.md) |
 
-- **Task 1: Fintech Mobile Wallet App Redesign.** Source: [wallet/](./wallet/). Interactive money journal with a zero-state, transaction actions, entry corrections, filters, local persistence and export.
-- **Task 3: Interactive E-commerce Checkout Prototype.** Source: [checkout/](./checkout/). Two-step delivery/payment journey with editable sample basket, calculations, form validation, edit-address path and a sample success state.
+## Practical reviewer route
 
-There are **two selected tasks** (meeting the internship's minimum requirement). Task 2 assets are provided as additional work but the native Figma library is **not** complete, so **do not tick Task 2** until a viewable Figma file exists. Task 4 is not submitted.
+1. Clone or download this public repository and run `python3 -m http.server 8000` from its root.
+2. Open `http://localhost:8000/` and use the four portfolio cards.
+3. **Wallet:** start at ₹0; record ₹500 income and ₹125.25 expense; edit, search, filter, delete and export; reload to check browser-local persistence.
+4. **Design system:** open the linked Figma file, review the foundations page, inspect seven real component sets and switch between button/field/badge variants. Also review the matching [component showcase](./design-system/).
+5. **Checkout:** adjust basket quantities, select shipping, apply `DEMO10`, validate a six-digit PIN, review payment and complete the simulated order.
+6. **Case study:** use arrow keys to move through ten slides, or print the full presentation to PDF using the browser.
 
-## Reviewer route
+## Verification and evidence
 
-1. On a computer with Python 3, clone/download the repository and run `python3 -m http.server 8000` from the root.
-2. Visit `http://localhost:8000/` for links to the tasks.
-3. In Wallet: add ₹500 as income, record ₹125.25 spending, edit/delete a record, search the activity and export CSV. Reload the browser to check persistence.
-4. In Checkout: change the sample quantities, switch to express delivery, apply `DEMO10`, enter a valid six-digit PIN code, edit the address, choose a sample method and complete the demo order.
-5. In Design System: inspect the [component showcase](./design-system/) and editable [SVG asset](./design-system/figma-component-board.svg).
+Playwright tests run in [GitHub Actions](https://github.com/harsh-sahdev/UX_Design_Internship/actions/workflows/wallet-qa.yml) with screenshots. Manual checks: [Wallet QA](./wallet/QA.md), [Checkout QA](./checkout/QA.md) and [Design System QA](./design-system/QA.md). A linked Figma design file exists, but **external link-access and team library publishing must be independently verified** before claiming either is public or published.
 
-## Automated test evidence
+## Boundaries
 
-Workflow: [UI/UX portfolio browser QA](https://github.com/harsh-sahdev/UX_Design_Internship/actions/workflows/wallet-qa.yml).
+These are interface exercises. The Wallet records locally entered entries and is not a linked bank, money-transfer service or auditable financial ledger. The Checkout does not charge money, store a real order or ship products. The case study documents design decisions and repeatable UI checks; it does not invent interviews, participant counts, conversion results or production telemetry.
 
-It runs Playwright Chromium tests and uploads screenshots. The workflow badge in the root README reflects the most recent result. Manual accessibility/visual items should not be marked complete without checking them.
-
-## Boundaries and authenticity
-
-These projects are coursework interfaces, not production banking or e-commerce systems. There is no login, database, actual inventory, regulatory payment flow or fulfilment. Sample values are explicitly labelled. No user interviews, real customer testing or security certification is claimed.
-
-**Portal form:** paste the public GitHub URL above and select only the tasks whose mandatory deliverables exist. LinkedIn and live-demo links are optional fields on the dashboard, not prerequisites.
-
-## Additional Task 2 option
-
-To include **Task 2 (Design System & Component Library in Figma)**, use the [one-run Figma builder](./design-system/figma-plugin/) to create actual native Figma components, variables and desktop/mobile frames in a new file. Share that file and add the link to this repository. The SVG/JSON assets or builder source **alone do not count as completing native Figma work**. Until the native file has been run and checked, select Tasks 1 and 3 only.
+The public GitHub repository is the primary code link. Additional live-demo and professional-profile fields in the portal are optional unless the portal itself imposes new requirements.
