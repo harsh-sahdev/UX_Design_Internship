@@ -107,3 +107,28 @@ body { background:var(--color-canvas); color:var(--color-ink); }
 
 /* Interface Craft: shared design language. */
 .form-card,.summary-card{box-shadow:var(--shadow-card)}.button-primary{background:var(--color-primary)}.button-primary:hover{background:var(--color-primary-hover)}.field input:focus,.coupon-row input:focus{outline:2px solid #98c2ae;border-color:var(--color-primary)}
+
+/* Cart review: editable quantities with readable, keyboard-accessible controls */
+.cart-product{display:flex;align-items:center;gap:12px;padding:15px 0;border-bottom:1px solid var(--color-border)}
+.cart-art{width:70px;height:70px;display:grid;place-items:center;flex-shrink:0;background:#edf2ef;border-radius:10px}
+.product-art{width:64px;height:64px}
+.cart-product-info{flex:1;min-width:0}
+.cart-product-info strong,.cart-product-info small{display:block}
+.cart-product-info strong{font-size:13px;color:var(--color-ink)}
+.cart-product-info small{font-size:11px;color:var(--color-muted);margin-top:4px}
+.cart-price{margin-left:auto;align-self:flex-start;white-space:nowrap;font-size:13px;color:var(--color-ink)}
+.cart-adjust{display:inline-flex;align-items:center;gap:0;margin-top:10px;border:1px solid var(--color-border);border-radius:6px;overflow:hidden}
+.cart-adjust button{width:34px;height:32px;display:grid;place-items:center;border:0;background:#f6f8f8;font-size:17px;color:var(--color-ink)}
+.cart-adjust button:hover:not(:disabled){background:#eaf3ef}
+.cart-adjust button:disabled{opacity:.35;cursor:not-allowed}
+.cart-adjust span{min-width:32px;text-align:center;font-size:12px;font-variant-numeric:tabular-nums}
+.cart-add{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px 0 10px;font-size:11px;color:var(--color-muted)}
+.cart-add-buttons{display:flex;gap:8px}
+.cart-add-buttons button{min-height:34px;border:1px solid var(--color-border);border-radius:6px;background:#fff;padding:6px 11px;color:var(--color-primary);font-weight:680;font-size:11px}
+.cart-add-buttons button:hover:not(:disabled){border-color:var(--color-primary);background:var(--color-primary-soft)}
+.cart-add-buttons button:disabled{opacity:.4;cursor:not-allowed}
+.cart-empty{padding:24px 12px;background:#f6f8f8;border:1px dashed var(--color-border);border-radius:9px;text-align:center;font-size:13px}
+.cart-empty p{font-size:11px;color:var(--color-muted)}
+.cart-error{font-size:12px;padding:10px;background:var(--color-danger-soft);color:var(--color-danger);border-radius:6px}
+[hidden]{display:none!important}
+@media(max-width:440px){.cart-product{gap:9px}.cart-art{width:54px;height:54px}.product-art{width:50px;height:50px}.cart-price{font-size:12px}}

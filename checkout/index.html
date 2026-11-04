@@ -22,7 +22,7 @@
       <div class="intro">
         <p class="eyebrow">Interface Craft / Checkout</p>
         <h1>One clear path<br>to checkout.</h1>
-        <p class="subline">Complete your order in two simple steps.</p>
+        <p class="subline">Review your basket, choose delivery, and complete a sample checkout.</p>
       </div>
 
       <div class="checkout-layout" id="checkout-layout">
@@ -34,7 +34,7 @@
           </ol>
 
           <section class="form-card" id="delivery-panel" aria-labelledby="delivery-heading">
-            <div class="section-top"><div><span class="step-kicker">STEP 01 / 02</span><h2 id="delivery-heading">Where should we deliver?</h2><p>Just the details needed to get your order there.</p></div><span class="section-number" aria-hidden="true">01</span></div>
+            <div class="section-top"><div><span class="step-kicker">STEP 01 / 02</span><h2 id="delivery-heading">Where should we deliver?</h2><p>A clear, accessible delivery form. Details stay on this page.</p></div><span class="section-number" aria-hidden="true">01</span></div>
             <form id="delivery-form" novalidate>
               <div class="two-col">
                 <div class="field"><label for="full-name">Full name <span class="required">*</span></label><input id="full-name" name="fullName" autocomplete="name" maxlength="80" placeholder="Alex Carter" required></div>
@@ -64,25 +64,27 @@
                 <label class="shipping-option selected"><input type="radio" name="payment" value="demo-card" checked><span class="radio-mark"></span><span class="shipping-text"><strong>Demo card payment</strong><small>Simulated payment. No card details requested.</small></span><span aria-hidden="true">▣</span></label>
                 <label class="shipping-option"><input type="radio" name="payment" value="cod"><span class="radio-mark"></span><span class="shipping-text"><strong>Cash on delivery</strong><small>Example cash payment on arrival.</small></span><span aria-hidden="true">₹</span></label>
               </fieldset>
-              <p class="safety-note"><span aria-hidden="true">ⓘ</span> This is a prototype. No personal details or payment information are sent to a server.</p>
+              <p class="safety-note"><span aria-hidden="true">ⓘ</span> This UI does not collect payment credentials or transmit personal information. No order is sent to a store.</p>
               <button class="button button-primary proceed" type="submit">Place demo order <span aria-hidden="true">→</span></button>
             </form>
           </section>
 
           <section class="form-card success-card" id="success-panel" aria-labelledby="success-heading" hidden>
             <span class="success-mark" aria-hidden="true">✓</span>
-            <p class="eyebrow">CHECKOUT COMPLETE</p>
+            <p class="eyebrow">SAMPLE CHECKOUT COMPLETE</p>
             <h2 id="success-heading">That was easy.</h2>
-            <p>We've simulated your checkout. No real purchase was made and no payment was charged.</p>
+            <p>Your sample order is complete. No purchase was made, no money changed hands, and no delivery was booked.</p>
             <div class="success-details"><span>Demo order reference</span><strong id="order-id">DEMO-000000</strong><span>Amount</span><strong id="order-total">₹0.00</strong></div>
-            <button class="button button-primary" id="restart" type="button">Start another demo</button>
+            <button class="button button-primary" id="restart" type="button">Start again</button>
           </section>
         </div>
 
         <aside class="summary-card" id="order-summary" aria-labelledby="summary-heading">
-          <div class="summary-heading"><div><span class="step-kicker">YOUR SELECTION</span><h2 id="summary-heading">Order summary</h2></div><span class="items-badge">2 items</span></div>
-          <div class="product"><div class="product-picture shoes" aria-hidden="true">↗</div><div class="product-info"><strong>Cloud Knit Runner</strong><small>Sand / Size 8 · Qty 1</small></div><strong>₹2,799</strong></div>
-          <div class="product"><div class="product-picture tote" aria-hidden="true">◈</div><div class="product-info"><strong>Everyday Canvas Tote</strong><small>Natural / One size · Qty 1</small></div><strong>₹899</strong></div>
+          <div class="summary-heading"><div><span class="step-kicker">REVIEW YOUR BASKET</span><h2 id="summary-heading">Order summary</h2></div><span class="items-badge" id="item-count">2 items</span></div>
+          <div id="cart-items" class="cart-items" aria-live="polite"></div>
+          <div id="cart-empty" class="cart-empty" hidden><strong>Your basket is empty.</strong><p>Add a sample item to continue with checkout.</p></div>
+          <div class="cart-add"><span>Sample items</span><div class="cart-add-buttons"><button type="button" data-add-item="runner">+ Runner</button><button type="button" data-add-item="tote">+ Tote</button></div></div>
+          <p id="cart-error" class="cart-error" role="alert" hidden>Please add an item before continuing.</p>
           <div class="coupon"><label for="coupon-code">Have a promo code?</label><div class="coupon-row"><input id="coupon-code" type="text" maxlength="16" placeholder="Enter code" autocomplete="off"><button type="button" id="apply-coupon">Apply</button></div><p id="coupon-message" role="status" aria-live="polite"></p></div>
           <dl class="totals">
             <div><dt>Subtotal</dt><dd id="subtotal">₹3,698.00</dd></div>
@@ -90,7 +92,7 @@
             <div><dt>Discount</dt><dd id="discount">−₹0.00</dd></div>
             <div class="total-line"><dt>Total</dt><dd id="grand-total">₹3,698.00</dd></div>
           </dl>
-          <p class="summary-footnote">All prices are sample INR amounts. Taxes are shown as included for this prototype.</p>
+          <p class="summary-footnote">Illustrative products and INR prices. Tax included. No real checkout is processed.</p>
         </aside>
       </div>
     </main>

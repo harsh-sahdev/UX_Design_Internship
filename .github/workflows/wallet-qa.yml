@@ -1,4 +1,4 @@
-name: Wallet browser QA
+name: UI/UX portfolio browser QA
 
 on:
   push:
