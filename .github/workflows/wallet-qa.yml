@@ -20,15 +20,11 @@ jobs:
         run: |
           node --check design-system/figma-plugin/code.js
           node tests/figma-builder-smoke.cjs
-      - name: Build Figma plugin install archive
-        run: |
-          cd design-system/figma-plugin
-          zip -q ../../figma-plugin.zip manifest.json code.js README.md
       - name: Upload Figma builder
         uses: actions/upload-artifact@v4
         with:
           name: interface-craft-figma-builder
-          path: figma-plugin.zip
+          path: design-system/figma-plugin/
           if-no-files-found: error
       - name: Install test dependencies
         run: npm install --no-audit --no-fund
