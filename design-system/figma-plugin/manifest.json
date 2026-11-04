@@ -1,0 +1,15 @@
+{
+  "name": "Interface Craft — Design System Builder",
+  "id": "1570482337050665439",
+  "api": "1.0.0",
+  "editorType": [
+    "figma"
+  ],
+  "main": "code.js",
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": [
+      "none"
+    ]
+  }
+}
