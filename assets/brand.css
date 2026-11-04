@@ -8,3 +8,7 @@
 .rail .ic-section{color:#abc1bc}
 .ic-short{display:none}
 @media(max-width:650px){.rail .ic-name,.rail .ic-section{display:none}.rail .ic-short{display:block;font-size:25px;color:#fff;font-weight:780;letter-spacing:-.06em}.rail .ic-brand{padding-left:0}.header .ic-name{font-size:19px}}
+
+/* Design System's local .logo span rule must not colour the entire wordmark. */
+.logo .ic-name { color: var(--color-ink); }
+.logo .ic-name > span { color: var(--color-primary); }
