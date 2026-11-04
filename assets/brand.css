@@ -12,3 +12,9 @@
 /* Design System's local .logo span rule must not colour the entire wordmark. */
 .logo .ic-name { color: var(--color-ink); }
 .logo .ic-name > span { color: var(--color-primary); }
+
+/* Local component styles must not recolour the base wordmark. */
+.ic-brand .ic-name { color: var(--color-ink); }
+.rail .ic-brand .ic-name { color: #f3faf7; }
+.ic-brand .ic-name > span { color: var(--color-primary); }
+.rail .ic-brand .ic-name > span { color: #a2d6c0; }

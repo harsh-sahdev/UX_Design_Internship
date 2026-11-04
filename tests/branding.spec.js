@@ -4,7 +4,7 @@ for(const pathname of ["/","/wallet/","/checkout/","/design-system/"]){
    await page.goto(pathname);
    await expect(page.locator(".ic-brand .ic-name").first()).toContainText("interfacecraft.");
    const colour=await page.locator(".ic-brand .ic-name>span").first().evaluate(el=>getComputedStyle(el).color);
-   expect(colour).toBe("rgb(32, 91, 80)");
+   expect(colour).toBe(pathname==="/wallet/" ? "rgb(162, 214, 192)" : "rgb(32, 91, 80)");
  });
 }
 test("portfolio navigation links open all three pages",async({page})=>{
