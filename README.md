@@ -1,31 +1,28 @@
 # Interface Craft
 
-A collection of four UI/UX internship assignments, built as small, inspectable projects.
+A small collection of UI/UX internship assignments. Each has its own source, usage notes and limits. The implementation stays straightforward: accessible HTML, responsive CSS and plain JavaScript.
 
-## Assignments
+## Projects
 
-| Task | Deliverable | Status |
+| Task | Project | Current state |
 | --- | --- | --- |
-| 01 · Fintech wallet redesign | Responsive, interactive wallet prototype | In progress |
-| 02 · Figma design system | Tokens, components, and handoff reference | Planned |
-| 03 · E-commerce checkout | Interactive checkout prototype | Planned |
-| 04 · End-to-end UX case study | Process, design decisions, and limitations | Planned |
+| 1 | [Mira money journal](./wallet/) | Redesigned and implemented; browser verification pending |
+| 2 | [Figma design system](./design-system/) | Web reference ready; native Figma file not built |
+| 3 | [Aster checkout](./checkout/) | Interactive checkout flow; final UI review pending |
+| 4 | UX case study | Not started |
 
-## Approach
+## Run
 
-The prototypes use HTML, CSS and JavaScript without a build step or backend. This keeps the work easy to review and appropriate for an internship scope. Any balances, people, orders, and payments are **sample data**; none of the demos move real money.
+From the repository root run:
 
-Design decisions are documented alongside the work. Usability findings will only be described as research findings when they have actually been observed and recorded.
+    python -m http.server 8000
 
-## Running locally
+Open http://localhost:8000/wallet/ to review Task 1, or http://localhost:8000/checkout/ for Task 3. The projects are static and don't require a build.
 
-Once a project folder has been added, open its `index.html` in a browser. For a closer-to-real deployment, serve this folder with a local static server (for example, `python -m http.server 8000`).
+Mira is a real browser-local personal money journal, not a banking service. It starts at zero and records only data the user enters. No real bank transfers or card payments happen.
 
-## Structure
+## Verification
 
-- `wallet/` — Fintech wallet concept
-- `design-system/` — Reusable tokens and component examples
-- `checkout/` — E-commerce checkout concept
-- `case-study/` — UX process and handoff notes
+Browser test scenarios are under [tests/](./tests/). After installing dependencies, run npm test. Manual responsive and accessibility review is tracked in [wallet/QA.md](./wallet/QA.md).
 
-The repository remains private during work.
+A public repository is required at submission time, but it is kept private during editing. Do not submit or claim native Figma work until that deliverable actually exists.

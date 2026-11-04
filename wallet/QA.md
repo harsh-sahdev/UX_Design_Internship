@@ -9,6 +9,7 @@
 - [ ] Invalid amounts (negative, extra decimal places, empty values) are rejected.
 - [ ] Search, In/Out filters, balance privacy, and CSV export work.
 - [ ] Reload preserves entries in a browser with localStorage enabled.
+- [ ] Edit and delete individual records, with a warning if a change would cause a negative balance.
 - [ ] Clear records requires confirmation and returns the page to zero.
 
 ## Visual and accessibility review

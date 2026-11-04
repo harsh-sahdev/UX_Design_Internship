@@ -8,6 +8,7 @@ Mira is a responsive personal money journal built using HTML, CSS and vanilla Ja
 - Records income and expenses with categories, descriptions, dates, and accurate two-decimal INR arithmetic.
 - Rejects invalid amounts and outflows larger than the recorded balance.
 - Calculates balance, this-month income/outflow, and searchable/filterable activity from saved records.
+- Supports editing and deleting individual records, with protection against a negative balance.
 - Hides displayed amounts, exports CSV backups, and provides a confirm-before-delete action.
 - Supports mobile layouts, keyboard navigation, clear empty states, and accessible form validation.
 

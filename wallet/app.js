@@ -45,6 +45,7 @@
   let hiddenAmounts = false;
   let toastTimeout = 0;
   let previousFocus = null;
+  let editingId = null;
 
   function save() {
     try {
@@ -103,7 +104,13 @@
     const amount = document.createElement("strong");
     amount.className = "entry-amount" + (entry.kind === "in" ? " in" : "");
     amount.textContent = hiddenAmounts ? "••••" : (entry.kind === "in" ? "+" : "−") + format(entry.amount);
-    item.append(direction, info, amount);
+    const edit = document.createElement("button");
+    edit.type = "button";
+    edit.className = "entry-edit";
+    edit.textContent = "Edit";
+    edit.setAttribute("aria-label", "Edit " + entry.description);
+    edit.addEventListener("click", () => openEntry(entry.kind, entry.id));
+    item.append(direction, info, amount, edit);
     return item;
   }
 
@@ -141,12 +148,16 @@
     }
   }
 
-  function openEntry(nextKind) {
+  function openEntry(nextKind, entryId = null) {
     kind = nextKind;
+    editingId = entryId;
+    const existing = entryId ? entries.find((entry) => entry.id === entryId) : null;
     previousFocus = document.activeElement;
     $("entry-form").reset();
     $("entry-error").hidden = true;
-    $("dialog-heading").textContent = kind === "in" ? "Money in" : "Money out";
+    $("dialog-heading").textContent = existing ? "Edit entry" : kind === "in" ? "Money in" : "Money out";
+    $("save-entry").textContent = existing ? "Save changes" : "Save entry";
+    $("delete-entry").hidden = !existing;
     $("dialog-description").textContent = kind === "in"
       ? "Record money you've received or added. This does not move money."
       : "Record money you've spent or sent elsewhere. This does not send a payment.";
@@ -156,7 +167,12 @@
       option.textContent = category;
       return option;
     }));
-    $("entry-date").value = todayLocal();
+    $("entry-date").value = existing ? existing.date : todayLocal();
+    if (existing) {
+      $("entry-description").value = existing.description;
+      $("entry-amount").value = (existing.amount / 100).toFixed(2);
+      $("entry-category").value = existing.category;
+    }
     $("entry-dialog").showModal();
     $("entry-description").focus();
   }
@@ -192,17 +208,22 @@
     if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || Number.isNaN(new Date(date + "T12:00:00").getTime())) {
       return formError("Choose a valid date.", $("entry-date"));
     }
-    if (kind === "out" && paise > balance()) {
-      return formError("This is more than your recorded balance. Add the money in first, or use a smaller amount.", $("entry-amount"));
+    const index = editingId ? entries.findIndex((entry) => entry.id === editingId) : -1;
+    const old = index >= 0 ? entries[index] : null;
+    const oldValue = old ? (old.kind === "in" ? old.amount : -old.amount) : 0;
+    const newValue = kind === "in" ? paise : -paise;
+    if (balance() - oldValue + newValue < 0) {
+      return formError("This change would make your recorded balance negative. Adjust another entry first.", $("entry-amount"));
     }
-    const id = (globalThis.crypto && typeof crypto.randomUUID === "function")
-      ? crypto.randomUUID() : "id-" + String(Date.now()) + "-" + Math.random().toString(16).slice(2);
-
-    entries.push({ id, kind, amount: paise, description, category, date });
+    const id = old ? old.id : (globalThis.crypto && typeof crypto.randomUUID === "function")
+      ? crypto.randomUUID() : Date.now().toString(16) + Math.random().toString(16).slice(2);
+    const updated = { id, kind, amount: paise, description, category, date };
+    if (old) entries[index] = updated;
+    else entries.push(updated);
     save();
     render();
     closeEntry();
-    announce("Entry saved to your journal.");
+    announce(old ? "Changes saved." : "Entry saved to your journal.");
   }
 
   function csvCell(value) {
@@ -235,6 +256,28 @@
   $("empty-action").addEventListener("click", () => openEntry("in"));
   $("entry-form").addEventListener("submit", saveEntry);
   $("close-entry").addEventListener("click", closeEntry);
+  $("delete-entry").addEventListener("click", () => {
+    const entry = entries.find((item) => item.id === editingId);
+    if (!entry) return;
+    $("delete-description").textContent = "Remove " + entry.description + " from this device? This cannot be undone.";
+    $("delete-dialog").showModal();
+  });
+  $("cancel-delete").addEventListener("click", () => $("delete-dialog").close());
+  $("confirm-delete").addEventListener("click", () => {
+    const index = entries.findIndex((item) => item.id === editingId);
+    if (index === -1) return $("delete-dialog").close();
+    const entry = entries[index];
+    const value = entry.kind === "in" ? entry.amount : -entry.amount;
+    $("delete-dialog").close();
+    if (balance() - value < 0) {
+      return formError("This income covers recorded spending. Edit or delete the expenses before removing it.", $("entry-amount"));
+    }
+    entries.splice(index, 1);
+    save();
+    render();
+    closeEntry();
+    announce("Entry deleted.");
+  });
   $("cancel-entry").addEventListener("click", closeEntry);
   $("toggle-balance").addEventListener("click", () => {
     hiddenAmounts = !hiddenAmounts;

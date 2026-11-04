@@ -49,3 +49,25 @@ test("masking and reset confirmation work", async ({ page }) => {
   await page.getByRole("button", { name: "Keep records" }).click();
   await expect(page.locator("#clear-dialog")).not.toBeVisible();
 });
+
+test("allows correcting and deleting a recorded transaction", async ({ page }) => {
+  await page.getByRole("button", { name: /Money in Income/ }).click();
+  await page.locator("#entry-description").fill("Deposit");
+  await page.locator("#entry-amount").fill("250");
+  await page.getByRole("button", { name: "Save entry" }).click();
+  await page.getByRole("button", { name: "Edit Deposit" }).click();
+  await page.locator("#entry-amount").fill("300");
+  await page.getByRole("button", { name: "Save changes" }).click();
+  await expect(page.locator("#balance")).toContainText("300.00");
+  await page.getByRole("button", { name: "Edit Deposit" }).click();
+  await page.locator("#delete-entry").click();
+  await page.locator("#confirm-delete").click();
+  await expect(page.locator("#balance")).toContainText("0.00");
+  await expect(page.locator("#entry-list li")).toHaveCount(0);
+});
+
+test("mobile layout does not overflow horizontally", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  const tooWide = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
+  expect(tooWide).toBeFalsy();
+});

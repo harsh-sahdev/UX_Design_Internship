@@ -98,7 +98,7 @@
       </div>
       <div class="field"><label for="entry-category">Category</label><select id="entry-category" name="category"></select></div>
       <p class="form-error" id="entry-error" role="alert" hidden></p>
-      <div class="dialog-actions"><button class="btn btn-outline" type="button" id="cancel-entry">Cancel</button><button class="btn btn-solid" type="submit" id="save-entry">Save entry</button></div>
+      <div class="dialog-actions"><button class="btn btn-danger" type="button" id="delete-entry" hidden>Delete entry</button><span class="dialog-spacer"></span><button class="btn btn-outline" type="button" id="cancel-entry">Cancel</button><button class="btn btn-solid" type="submit" id="save-entry">Save entry</button></div>
     </form>
   </dialog>
 
@@ -107,6 +107,10 @@
     <div class="dialog-actions"><button class="btn btn-outline" type="button" id="cancel-clear">Keep records</button><button class="btn btn-danger-solid" type="button" id="confirm-clear">Clear records</button></div>
   </dialog>
 
+  <dialog class="confirm-dialog" id="delete-dialog" aria-labelledby="delete-heading">
+    <h2 id="delete-heading">Delete this entry?</h2><p id="delete-description">This entry will be removed from the records on this device.</p>
+    <div class="dialog-actions"><button class="btn btn-outline" type="button" id="cancel-delete">Keep entry</button><button class="btn btn-danger-solid" type="button" id="confirm-delete">Delete entry</button></div>
+  </dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
