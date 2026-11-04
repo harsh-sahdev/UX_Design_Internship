@@ -58,7 +58,8 @@
             <div class="section-heading"><h2 id="action-heading">Record a transaction</h2><p>Keep your balance current in a few seconds.</p></div>
             <div class="action-buttons">
               <button class="action-button action-in" data-kind="in" type="button"><span class="action-glyph" aria-hidden="true">↓</span><span><strong>Money in</strong><small>Income, cash added, refunds</small></span><span class="action-end" aria-hidden="true">↗</span></button>
-              <button class="action-button action-out" data-kind="out" type="button"><span class="action-glyph" aria-hidden="true">↑</span><span><strong>Money out</strong><small>Purchases, bills, transfers recorded</small></span><span class="action-end" aria-hidden="true">↗</span></button>
+              <button class="action-button action-out" data-kind="out" type="button"><span class="action-glyph" aria-hidden="true">↑</span><span><strong>Money out</strong><small>Purchases, bills and everyday spending</small></span><span class="action-end" aria-hidden="true">↗</span></button>
+              <button class="action-button action-transfer" data-kind="transfer" type="button"><span class="action-glyph" aria-hidden="true">↗</span><span><strong>Peer transfer</strong><small>Record a person-to-person send</small></span><span class="action-end" aria-hidden="true">→</span></button>
             </div>
           </section>
         </section>
@@ -90,7 +91,7 @@
     <form id="entry-form" novalidate>
       <div class="dialog-header"><div><p id="dialog-kicker">New entry</p><h2 id="dialog-heading">Money in</h2></div><button class="dialog-close" id="close-entry" type="button" aria-label="Close dialog">×</button></div>
       <p class="dialog-description" id="dialog-description">Add an amount to your local record. No money is transferred.</p>
-      <div class="field"><label for="entry-description">Description</label><input id="entry-description" name="description" type="text" maxlength="80" placeholder="What was this for?" required></div>
+      <div class="field"><label id="entry-description-label" for="entry-description">Description</label><input id="entry-description" name="description" type="text" maxlength="80" placeholder="What was this for?" required></div>
       <div class="field-grid">
         <div class="field"><label for="entry-amount">Amount (₹)</label><input id="entry-amount" name="amount" type="text" inputmode="decimal" autocomplete="off" placeholder="0.00" required></div>
         <div class="field"><label for="entry-date">Date</label><input id="entry-date" name="date" type="date" required></div>
